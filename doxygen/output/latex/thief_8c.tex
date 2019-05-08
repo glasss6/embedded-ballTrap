@@ -1,0 +1,19 @@
+\hypertarget{thief_8c}{}\section{C\+:/\+Users/sglas/embedded\+Software/accel\+Test/thief.c File Reference}
+\label{thief_8c}\index{C:/Users/sglas/embeddedSoftware/accelTest/thief.c@{C:/Users/sglas/embeddedSoftware/accelTest/thief.c}}
+{\ttfamily \#include \char`\"{}project\+\_\+settings.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}nrf24network.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}subsystem.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}hal\+\_\+general.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}spi.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}string.\+h\char`\"{}}\newline
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{group__thief_ga03f9659356dd27b2c363ec392788dc50}{Thief\+\_\+\+Trip}} (uint8\+\_\+t score)
+\begin{DoxyCompactList}\small\item\em send T\+R\+IP message over network to Brainframe \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__thief_ga9452fbc6fc191bdc2b07c6f64fcaf4d1}{Thief\+\_\+\+Access}} (uint8\+\_\+t score)
+\begin{DoxyCompactList}\small\item\em send A\+C\+C\+E\+SS message over network to Brainframe \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__thief_gad35f1b0518e285e9b5ea7b7be1a1c6e0}{Thief\+\_\+\+Error}} (uint8\+\_\+t error\+\_\+code)
+\begin{DoxyCompactList}\small\item\em send E\+R\+R\+OR message over network to Brainframe \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__thief_ga46dd5608b4e5e77b04ef07a9a390cb8f}{Thief\+\_\+\+Init}} (void($\ast$Chip\+Enable)(uint8\+\_\+t), void($\ast$Chip\+Select\+Not)(uint8\+\_\+t), void($\ast$Arm)(void), void($\ast$Disarm)(void), void($\ast$Difficulty)(uint8\+\_\+t))
+\begin{DoxyCompactList}\small\item\em initialize the n\+R\+F24 Network module for the Thief node and set callbacks \end{DoxyCompactList}\end{DoxyCompactItemize}

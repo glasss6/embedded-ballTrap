@@ -1,0 +1,111 @@
+\hypertarget{group__thief__brainframe}{}\section{Thief Brainframe Module}
+\label{group__thief__brainframe}\index{Thief Brainframe Module@{Thief Brainframe Module}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{group__thief__brainframe_gaf4b9fbc4453a50a19a28ecee8ed63044}{Thief\+\_\+\+Arm}} (uint8\+\_\+t difficulty, uint8\+\_\+t address)
+\begin{DoxyCompactList}\small\item\em send A\+RM message over network to a theif node \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__thief__brainframe_ga10cdfb092b86745f7fb0b3531e0436ab}{Thief\+\_\+\+Disarm}} (uint8\+\_\+t difficulty, uint8\+\_\+t address)
+\begin{DoxyCompactList}\small\item\em send D\+I\+S\+A\+RM message over network to a theif node \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__thief__brainframe_ga7ca7cde9d8471a5e774b9259dcc15482}{Thief\+\_\+\+Difficulty}} (uint8\+\_\+t difficulty, uint8\+\_\+t address)
+\begin{DoxyCompactList}\small\item\em send D\+I\+F\+F\+I\+C\+U\+L\+TY message over network to a theif node \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__thief__brainframe_ga9a9be1f1330ceab71417b4f6896c6596}{Thief\+\_\+\+Brainframe\+Init}} (void($\ast$Chip\+Enable)(uint8\+\_\+t), void($\ast$Chip\+Select\+Not)(uint8\+\_\+t), void($\ast$Trip)(uint8\+\_\+t, uint8\+\_\+t), void($\ast$Access)(uint8\+\_\+t, uint8\+\_\+t))
+\begin{DoxyCompactList}\small\item\em initialize the n\+R\+F24 Network module for the Thief Brainframe and set callbacks \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+T\+H\+I\+E\+F\+\_\+\+S\+PI should be defined in \mbox{\hyperlink{project__settings_8h}{project\+\_\+settings.\+h}}
+
+This module will be used by the brainframe application and by Thief nodes for testing without the actual brainframe present. 
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{group__thief__brainframe_gaf4b9fbc4453a50a19a28ecee8ed63044}\label{group__thief__brainframe_gaf4b9fbc4453a50a19a28ecee8ed63044}} 
+\index{Thief Brainframe Module@{Thief Brainframe Module}!Thief\_Arm@{Thief\_Arm}}
+\index{Thief\_Arm@{Thief\_Arm}!Thief Brainframe Module@{Thief Brainframe Module}}
+\subsubsection{\texorpdfstring{Thief\_Arm()}{Thief\_Arm()}}
+{\footnotesize\ttfamily void Thief\+\_\+\+Arm (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{difficulty,  }\item[{uint8\+\_\+t}]{address }\end{DoxyParamCaption})}
+
+
+
+send A\+RM message over network to a theif node 
+
+
+\begin{DoxyParams}{Parameters}
+{\em difficulty} & difficulty byte (0 -\/ no change, 1 -\/ easy peasy, 255 -\/ too hard) \\
+\hline
+{\em address} & node address (0x3F for broadcast to all) \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 24 of file thief\+\_\+brainframe.\+c.
+
+\mbox{\Hypertarget{group__thief__brainframe_ga9a9be1f1330ceab71417b4f6896c6596}\label{group__thief__brainframe_ga9a9be1f1330ceab71417b4f6896c6596}} 
+\index{Thief Brainframe Module@{Thief Brainframe Module}!Thief\_BrainframeInit@{Thief\_BrainframeInit}}
+\index{Thief\_BrainframeInit@{Thief\_BrainframeInit}!Thief Brainframe Module@{Thief Brainframe Module}}
+\subsubsection{\texorpdfstring{Thief\_BrainframeInit()}{Thief\_BrainframeInit()}}
+{\footnotesize\ttfamily void Thief\+\_\+\+Brainframe\+Init (\begin{DoxyParamCaption}\item[{void($\ast$)(uint8\+\_\+t)}]{Chip\+Enable,  }\item[{void($\ast$)(uint8\+\_\+t)}]{Chip\+Select\+Not,  }\item[{void($\ast$)(uint8\+\_\+t, uint8\+\_\+t)}]{Trip,  }\item[{void($\ast$)(uint8\+\_\+t, uint8\+\_\+t)}]{Access }\end{DoxyParamCaption})}
+
+
+
+initialize the n\+R\+F24 Network module for the Thief Brainframe and set callbacks 
+
+If using brainframe for testing (e.\+g. already using the default nrf24 network for Thief\+\_\+\+Init) then define T\+H\+I\+E\+F\+\_\+\+B\+R\+A\+I\+N\+F\+R\+A\+M\+E\+\_\+\+N\+E\+T\+W\+O\+RK in \mbox{\hyperlink{project__settings_8h}{project\+\_\+settings.\+h}} to be the nrf24network pointer for the brainframe network instance.
+
+
+\begin{DoxyParams}{Parameters}
+{\em Chip\+Enable} & Function pointer to method that controls chip enable pin via G\+P\+IO \\
+\hline
+{\em Chip\+Select\+Not} & Function pointer to method that controls the S\+PI chip select for the n\+R\+F24\+L01+ \\
+\hline
+{\em Trip} & (optional)Function pointer to call when T\+R\+IP message received from Thief node \\
+\hline
+{\em Access} & (optional)Function pointer to call when A\+C\+C\+E\+SS message received from Thief node \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 66 of file thief\+\_\+brainframe.\+c.
+
+\mbox{\Hypertarget{group__thief__brainframe_ga7ca7cde9d8471a5e774b9259dcc15482}\label{group__thief__brainframe_ga7ca7cde9d8471a5e774b9259dcc15482}} 
+\index{Thief Brainframe Module@{Thief Brainframe Module}!Thief\_Difficulty@{Thief\_Difficulty}}
+\index{Thief\_Difficulty@{Thief\_Difficulty}!Thief Brainframe Module@{Thief Brainframe Module}}
+\subsubsection{\texorpdfstring{Thief\_Difficulty()}{Thief\_Difficulty()}}
+{\footnotesize\ttfamily void Thief\+\_\+\+Difficulty (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{difficulty,  }\item[{uint8\+\_\+t}]{address }\end{DoxyParamCaption})}
+
+
+
+send D\+I\+F\+F\+I\+C\+U\+L\+TY message over network to a theif node 
+
+
+\begin{DoxyParams}{Parameters}
+{\em difficulty} & difficulty byte (0 -\/ no change, 1 -\/ easy peasy, 255 -\/ too hard) \\
+\hline
+{\em address} & node address (0x3F for broadcast to all) \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 52 of file thief\+\_\+brainframe.\+c.
+
+\mbox{\Hypertarget{group__thief__brainframe_ga10cdfb092b86745f7fb0b3531e0436ab}\label{group__thief__brainframe_ga10cdfb092b86745f7fb0b3531e0436ab}} 
+\index{Thief Brainframe Module@{Thief Brainframe Module}!Thief\_Disarm@{Thief\_Disarm}}
+\index{Thief\_Disarm@{Thief\_Disarm}!Thief Brainframe Module@{Thief Brainframe Module}}
+\subsubsection{\texorpdfstring{Thief\_Disarm()}{Thief\_Disarm()}}
+{\footnotesize\ttfamily void Thief\+\_\+\+Disarm (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{difficulty,  }\item[{uint8\+\_\+t}]{address }\end{DoxyParamCaption})}
+
+
+
+send D\+I\+S\+A\+RM message over network to a theif node 
+
+
+\begin{DoxyParams}{Parameters}
+{\em difficulty} & difficulty byte (0 -\/ no change, 1 -\/ easy peasy, 255 -\/ too hard) \\
+\hline
+{\em address} & node address (0x3F for broadcast to all) \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 38 of file thief\+\_\+brainframe.\+c.
+

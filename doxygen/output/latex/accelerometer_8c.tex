@@ -1,0 +1,140 @@
+\hypertarget{accelerometer_8c}{}\section{C\+:/\+Users/sglas/embedded\+Software/accel\+Test/accelerometer.c File Reference}
+\label{accelerometer_8c}\index{C:/Users/sglas/embeddedSoftware/accelTest/accelerometer.c@{C:/Users/sglas/embeddedSoftware/accelTest/accelerometer.c}}
+
+
+Source code for accelerometer module.  
+
+
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}accelerometer.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}project\+\_\+settings.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}task.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}i2c.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}hal\+\_\+general.\+h\char`\"{}}\newline
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structaccelerometer__data}{accelerometer\+\_\+data}}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{accelerometer_8c_a64aa3998681c639bbda26733601a2278}{G\+S\+C\+A\+LE}}~2
+\item 
+\#define \mbox{\hyperlink{accelerometer_8c_a28e0337e76af1650c6347379eb7b5620}{M\+M\+A8452\+\_\+\+A\+D\+D\+R\+E\+SS}}~0x1D
+\item 
+\#define \mbox{\hyperlink{accelerometer_8c_a9fcb9e460d175bfc7ab4d80bf788b43a}{W\+H\+O\+\_\+\+A\+M\+\_\+I}}~0x0D
+\item 
+\#define \mbox{\hyperlink{accelerometer_8c_a1e87680baa43595cf59bfda9d24ab35c}{D\+E\+V\+I\+C\+E\+\_\+\+F\+O\+U\+ND}}~0x2A
+\item 
+\#define \mbox{\hyperlink{accelerometer_8c_abd83ea49367ca7850ffc9091890aa46b}{C\+T\+R\+L\+\_\+\+R\+E\+G1}}~0x2A
+\item 
+\#define \mbox{\hyperlink{accelerometer_8c_a6a9a7c12dbef16dad229b36db5815241}{X\+Y\+Z\+\_\+\+D\+A\+T\+A\+\_\+\+C\+FG}}~0x0E
+\item 
+\#define \mbox{\hyperlink{accelerometer_8c_a5b104460d2b3843bfc2792c89c02da04}{O\+U\+T\+\_\+\+X\+\_\+\+M\+SB}}~0x01
+\item 
+\#define \mbox{\hyperlink{accelerometer_8c_aa8cfc4e4ae1507fb0b4d3d4c9e9d4077}{I2\+C\+\_\+\+C\+L\+O\+C\+K\+\_\+\+S\+P\+E\+ED}}~100000
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int8\+\_\+t \mbox{\hyperlink{group__accelerometer_gabb5dc31f52b4c94babb890afe85fdc29}{Accelerometer\+\_\+\+Init}} (uint16\+\_\+t period, void($\ast$callback)(float x, float y, float z))
+\begin{DoxyCompactList}\small\item\em Initialize the accelerometer to read data at a period returning to a callback. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__accelerometer_gae22be8908e6faff9d8ea3e54adfb31f0}{Accelerometer\+\_\+\+Deinit}} ()
+\begin{DoxyCompactList}\small\item\em Deinitialize the accelerometer task scheduler. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Source code for accelerometer module. 
+
+\begin{DoxyAuthor}{Author}
+Stephen Glass 
+
+Lonnie Souder 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+May 5 2019 
+\end{DoxyDate}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{accelerometer_8c_abd83ea49367ca7850ffc9091890aa46b}\label{accelerometer_8c_abd83ea49367ca7850ffc9091890aa46b}} 
+\index{accelerometer.c@{accelerometer.c}!CTRL\_REG1@{CTRL\_REG1}}
+\index{CTRL\_REG1@{CTRL\_REG1}!accelerometer.c@{accelerometer.c}}
+\subsubsection{\texorpdfstring{CTRL\_REG1}{CTRL\_REG1}}
+{\footnotesize\ttfamily \#define C\+T\+R\+L\+\_\+\+R\+E\+G1~0x2A}
+
+
+
+Definition at line 27 of file accelerometer.\+c.
+
+\mbox{\Hypertarget{accelerometer_8c_a1e87680baa43595cf59bfda9d24ab35c}\label{accelerometer_8c_a1e87680baa43595cf59bfda9d24ab35c}} 
+\index{accelerometer.c@{accelerometer.c}!DEVICE\_FOUND@{DEVICE\_FOUND}}
+\index{DEVICE\_FOUND@{DEVICE\_FOUND}!accelerometer.c@{accelerometer.c}}
+\subsubsection{\texorpdfstring{DEVICE\_FOUND}{DEVICE\_FOUND}}
+{\footnotesize\ttfamily \#define D\+E\+V\+I\+C\+E\+\_\+\+F\+O\+U\+ND~0x2A}
+
+
+
+Definition at line 26 of file accelerometer.\+c.
+
+\mbox{\Hypertarget{accelerometer_8c_a64aa3998681c639bbda26733601a2278}\label{accelerometer_8c_a64aa3998681c639bbda26733601a2278}} 
+\index{accelerometer.c@{accelerometer.c}!GSCALE@{GSCALE}}
+\index{GSCALE@{GSCALE}!accelerometer.c@{accelerometer.c}}
+\subsubsection{\texorpdfstring{GSCALE}{GSCALE}}
+{\footnotesize\ttfamily \#define G\+S\+C\+A\+LE~2}
+
+following macros should be defined project\+\_\+settings \#define I2\+C\+\_\+\+M\+A\+X\+\_\+\+T\+X\+\_\+\+S\+I\+ZE 2 \#define I2\+C\+\_\+\+M\+A\+X\+\_\+\+R\+X\+\_\+\+S\+I\+ZE 6 
+
+Definition at line 23 of file accelerometer.\+c.
+
+\mbox{\Hypertarget{accelerometer_8c_aa8cfc4e4ae1507fb0b4d3d4c9e9d4077}\label{accelerometer_8c_aa8cfc4e4ae1507fb0b4d3d4c9e9d4077}} 
+\index{accelerometer.c@{accelerometer.c}!I2C\_CLOCK\_SPEED@{I2C\_CLOCK\_SPEED}}
+\index{I2C\_CLOCK\_SPEED@{I2C\_CLOCK\_SPEED}!accelerometer.c@{accelerometer.c}}
+\subsubsection{\texorpdfstring{I2C\_CLOCK\_SPEED}{I2C\_CLOCK\_SPEED}}
+{\footnotesize\ttfamily \#define I2\+C\+\_\+\+C\+L\+O\+C\+K\+\_\+\+S\+P\+E\+ED~100000}
+
+
+
+Definition at line 31 of file accelerometer.\+c.
+
+\mbox{\Hypertarget{accelerometer_8c_a28e0337e76af1650c6347379eb7b5620}\label{accelerometer_8c_a28e0337e76af1650c6347379eb7b5620}} 
+\index{accelerometer.c@{accelerometer.c}!MMA8452\_ADDRESS@{MMA8452\_ADDRESS}}
+\index{MMA8452\_ADDRESS@{MMA8452\_ADDRESS}!accelerometer.c@{accelerometer.c}}
+\subsubsection{\texorpdfstring{MMA8452\_ADDRESS}{MMA8452\_ADDRESS}}
+{\footnotesize\ttfamily \#define M\+M\+A8452\+\_\+\+A\+D\+D\+R\+E\+SS~0x1D}
+
+
+
+Definition at line 24 of file accelerometer.\+c.
+
+\mbox{\Hypertarget{accelerometer_8c_a5b104460d2b3843bfc2792c89c02da04}\label{accelerometer_8c_a5b104460d2b3843bfc2792c89c02da04}} 
+\index{accelerometer.c@{accelerometer.c}!OUT\_X\_MSB@{OUT\_X\_MSB}}
+\index{OUT\_X\_MSB@{OUT\_X\_MSB}!accelerometer.c@{accelerometer.c}}
+\subsubsection{\texorpdfstring{OUT\_X\_MSB}{OUT\_X\_MSB}}
+{\footnotesize\ttfamily \#define O\+U\+T\+\_\+\+X\+\_\+\+M\+SB~0x01}
+
+
+
+Definition at line 29 of file accelerometer.\+c.
+
+\mbox{\Hypertarget{accelerometer_8c_a9fcb9e460d175bfc7ab4d80bf788b43a}\label{accelerometer_8c_a9fcb9e460d175bfc7ab4d80bf788b43a}} 
+\index{accelerometer.c@{accelerometer.c}!WHO\_AM\_I@{WHO\_AM\_I}}
+\index{WHO\_AM\_I@{WHO\_AM\_I}!accelerometer.c@{accelerometer.c}}
+\subsubsection{\texorpdfstring{WHO\_AM\_I}{WHO\_AM\_I}}
+{\footnotesize\ttfamily \#define W\+H\+O\+\_\+\+A\+M\+\_\+I~0x0D}
+
+
+
+Definition at line 25 of file accelerometer.\+c.
+
+\mbox{\Hypertarget{accelerometer_8c_a6a9a7c12dbef16dad229b36db5815241}\label{accelerometer_8c_a6a9a7c12dbef16dad229b36db5815241}} 
+\index{accelerometer.c@{accelerometer.c}!XYZ\_DATA\_CFG@{XYZ\_DATA\_CFG}}
+\index{XYZ\_DATA\_CFG@{XYZ\_DATA\_CFG}!accelerometer.c@{accelerometer.c}}
+\subsubsection{\texorpdfstring{XYZ\_DATA\_CFG}{XYZ\_DATA\_CFG}}
+{\footnotesize\ttfamily \#define X\+Y\+Z\+\_\+\+D\+A\+T\+A\+\_\+\+C\+FG~0x0E}
+
+
+
+Definition at line 28 of file accelerometer.\+c.
+

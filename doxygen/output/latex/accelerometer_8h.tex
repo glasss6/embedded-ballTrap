@@ -1,0 +1,45 @@
+\hypertarget{accelerometer_8h}{}\section{C\+:/\+Users/sglas/embedded\+Software/accel\+Test/accelerometer.h File Reference}
+\label{accelerometer_8h}\index{C:/Users/sglas/embeddedSoftware/accelTest/accelerometer.h@{C:/Users/sglas/embeddedSoftware/accelTest/accelerometer.h}}
+
+
+Code to read data from an accelerometer. Designed for Spark\+Fun Triple Axis Accelerometer Breakout (M\+M\+A8452Q)  
+
+
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}project\+\_\+settings.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}task.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}hal\+\_\+general.\+h\char`\"{}}\newline
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{group__accelerometer_ga8b423e9f25b16e32c82ab15528d61d1b}{E\+R\+R\+O\+R\+\_\+\+R\+X\+\_\+\+S\+I\+ZE}}~(-\/1)
+\item 
+\#define \mbox{\hyperlink{group__accelerometer_ga5f5adccae1b5f6db5c660ae10cec9afb}{E\+R\+R\+O\+R\+\_\+\+T\+X\+\_\+\+S\+I\+ZE}}~(-\/2)
+\item 
+\#define \mbox{\hyperlink{group__accelerometer_ga802fe27b06ba320251ae97983a68ce64}{E\+R\+R\+O\+R\+\_\+\+N\+O\+T\+\_\+\+O\+N\+L\+I\+NE}}~(-\/3)
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int8\+\_\+t \mbox{\hyperlink{group__accelerometer_gabb5dc31f52b4c94babb890afe85fdc29}{Accelerometer\+\_\+\+Init}} (uint16\+\_\+t period, void($\ast$callback)(float x, float y, float z))
+\begin{DoxyCompactList}\small\item\em Initialize the accelerometer to read data at a period returning to a callback. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__accelerometer_gae22be8908e6faff9d8ea3e54adfb31f0}{Accelerometer\+\_\+\+Deinit}} (void)
+\begin{DoxyCompactList}\small\item\em Deinitialize the accelerometer task scheduler. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Code to read data from an accelerometer. Designed for Spark\+Fun Triple Axis Accelerometer Breakout (M\+M\+A8452Q) 
+
+\begin{DoxyAuthor}{Author}
+Stephen Glass 
+
+Lonnie Souder 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0
+\end{DoxyVersion}
+following macros should be defined project\+\_\+settings
+
+\#define I2\+C\+\_\+\+M\+A\+X\+\_\+\+T\+X\+\_\+\+S\+I\+ZE 2
+
+\#define I2\+C\+\_\+\+M\+A\+X\+\_\+\+R\+X\+\_\+\+S\+I\+ZE 6 

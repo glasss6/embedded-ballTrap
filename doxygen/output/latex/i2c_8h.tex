@@ -1,0 +1,251 @@
+\hypertarget{i2c_8h}{}\section{C\+:/\+Users/sglas/embedded\+Software/accel\+Test/i2c.h File Reference}
+\label{i2c_8h}\index{C:/Users/sglas/embeddedSoftware/accelTest/i2c.h@{C:/Users/sglas/embeddedSoftware/accelTest/i2c.h}}
+{\ttfamily \#include \char`\"{}project\+\_\+settings.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}hal\+\_\+i2c.\+h\char`\"{}}\newline
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structi2c__transaction}{i2c\+\_\+transaction}}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{i2c_8h_aa38f74639b9f772b2c7b9951a62bdef3}{I2\+C\+\_\+\+M\+A\+X\+\_\+\+T\+R\+A\+N\+S\+A\+C\+T\+I\+O\+NS}}~4
+\item 
+\#define \mbox{\hyperlink{i2c_8h_ae014e4ccad1cdab524116fe12eeeb019}{T\+R\+A\+N\+S\+A\+C\+T\+I\+O\+N\+\_\+\+F\+A\+I\+L\+ED}}~1
+\item 
+\#define \mbox{\hyperlink{i2c_8h_a54d06557cd58c91d1e50f6fb1f9aa8cf}{T\+R\+A\+N\+S\+A\+C\+T\+I\+O\+N\+\_\+\+S\+U\+C\+C\+E\+S\+S\+F\+UL}}~0
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \mbox{\hyperlink{structi2c__transaction}{i2c\+\_\+transaction}} \mbox{\hyperlink{i2c_8h_a8b9b6c6a900b8e4a9ca7c41f6cf1d6fa}{i2c\+\_\+transaction\+\_\+t}}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{i2c_8h_a91e920a8b4ea820781519688c4539bb4}{I2\+C\+\_\+\+Init}} (i2c\+\_\+settings\+\_\+t $\ast$i2c\+\_\+settings)
+\item 
+void \mbox{\hyperlink{i2c_8h_abf53f7cb2b18ef3b3702bd8828c3c5f5}{I2\+C\+\_\+\+Transact}} (\mbox{\hyperlink{i2c_8h_a8b9b6c6a900b8e4a9ca7c41f6cf1d6fa}{i2c\+\_\+transaction\+\_\+t}} $\ast$transaction)
+\item 
+uint8\+\_\+t \mbox{\hyperlink{i2c_8h_ac1c58b7fd5e1c5a7dcc1c4f9af21288a}{I2\+C\+\_\+\+Tx\+\_\+\+Handler}} (uint8\+\_\+t channel)
+\item 
+void \mbox{\hyperlink{i2c_8h_af374787210c5717ce5591ddb49968253}{I2\+C\+\_\+\+Rx\+\_\+\+Handler}} (uint8\+\_\+t channel, uint8\+\_\+t byte)
+\item 
+uint16\+\_\+t \mbox{\hyperlink{i2c_8h_a577120aa1805d66914426aaae451e969}{I2\+C\+\_\+\+Get\+Slave\+Address}} (uint8\+\_\+t channel)
+\item 
+uint8\+\_\+t \mbox{\hyperlink{i2c_8h_a147ba57b31175418241c0abb7fcdf864}{I2\+C\+\_\+\+Get\+Tx\+Byte}} (uint8\+\_\+t channel)
+\item 
+uint8\+\_\+t \mbox{\hyperlink{i2c_8h_abc19f34cf43ee55af95b439386bdd058}{I2\+C\+\_\+\+Get\+Tx\+Size}} (uint8\+\_\+t channel)
+\item 
+uint8\+\_\+t \mbox{\hyperlink{i2c_8h_ab74693bbfaad41fc41d9fb10912a0321}{I2\+C\+\_\+\+Get\+Rx\+Size}} (uint8\+\_\+t channel)
+\item 
+uint8\+\_\+t \mbox{\hyperlink{i2c_8h_aa142664dfdd2e7e60fed3af928f6d260}{I2\+C\+\_\+\+Get\+Stay\+Active}} (uint8\+\_\+t channel)
+\item 
+void \mbox{\hyperlink{i2c_8h_afb942cc37be00ecd3865f3ac5fdee58a}{I2\+C\+\_\+\+Transaction\+Success}} (uint8\+\_\+t channel)
+\item 
+void \mbox{\hyperlink{i2c_8h_aaaef3a860a7e3b889cbcb68674f26fd1}{I2\+C\+\_\+\+Transaction\+Fail}} (uint8\+\_\+t channel)
+\item 
+void \mbox{\hyperlink{i2c_8h_ab3ed2134b647ccb3ca01d69fe398381e}{hal\+\_\+\+I2\+C\+\_\+\+Init}} (i2c\+\_\+settings\+\_\+t $\ast$settings)
+\item 
+void \mbox{\hyperlink{i2c_8h_ac77da456b29de453f0348aea0711b723}{hal\+\_\+\+I2\+C\+\_\+\+Enable}} (uint8\+\_\+t channel)
+\item 
+void \mbox{\hyperlink{i2c_8h_a51d2a5e4a644eb730fec49e670a058d9}{hal\+\_\+\+I2\+C\+\_\+\+Disable}} (uint8\+\_\+t channel)
+\item 
+void \mbox{\hyperlink{i2c_8h_a7493828162acc239928108be6150295b}{hal\+\_\+\+I2\+C\+\_\+\+Send\+Start}} (uint8\+\_\+t channel)
+\item 
+void \mbox{\hyperlink{i2c_8h_aeb7963a4ca570e98f01e98832033243a}{hal\+\_\+\+I2\+C\+\_\+\+Enable\+Interrupts}} (uint8\+\_\+t channel)
+\item 
+void \mbox{\hyperlink{i2c_8h_a2940a001b3d45561c99c9dfc5046b997}{hal\+\_\+\+I2\+C\+\_\+\+Disable\+Interrupts}} (uint8\+\_\+t channel)
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{i2c_8h_aa38f74639b9f772b2c7b9951a62bdef3}\label{i2c_8h_aa38f74639b9f772b2c7b9951a62bdef3}} 
+\index{i2c.h@{i2c.h}!I2C\_MAX\_TRANSACTIONS@{I2C\_MAX\_TRANSACTIONS}}
+\index{I2C\_MAX\_TRANSACTIONS@{I2C\_MAX\_TRANSACTIONS}!i2c.h@{i2c.h}}
+\subsubsection{\texorpdfstring{I2C\_MAX\_TRANSACTIONS}{I2C\_MAX\_TRANSACTIONS}}
+{\footnotesize\ttfamily \#define I2\+C\+\_\+\+M\+A\+X\+\_\+\+T\+R\+A\+N\+S\+A\+C\+T\+I\+O\+NS~4}
+
+
+
+Definition at line 31 of file i2c.\+h.
+
+\mbox{\Hypertarget{i2c_8h_ae014e4ccad1cdab524116fe12eeeb019}\label{i2c_8h_ae014e4ccad1cdab524116fe12eeeb019}} 
+\index{i2c.h@{i2c.h}!TRANSACTION\_FAILED@{TRANSACTION\_FAILED}}
+\index{TRANSACTION\_FAILED@{TRANSACTION\_FAILED}!i2c.h@{i2c.h}}
+\subsubsection{\texorpdfstring{TRANSACTION\_FAILED}{TRANSACTION\_FAILED}}
+{\footnotesize\ttfamily \#define T\+R\+A\+N\+S\+A\+C\+T\+I\+O\+N\+\_\+\+F\+A\+I\+L\+ED~1}
+
+
+
+Definition at line 54 of file i2c.\+h.
+
+\mbox{\Hypertarget{i2c_8h_a54d06557cd58c91d1e50f6fb1f9aa8cf}\label{i2c_8h_a54d06557cd58c91d1e50f6fb1f9aa8cf}} 
+\index{i2c.h@{i2c.h}!TRANSACTION\_SUCCESSFUL@{TRANSACTION\_SUCCESSFUL}}
+\index{TRANSACTION\_SUCCESSFUL@{TRANSACTION\_SUCCESSFUL}!i2c.h@{i2c.h}}
+\subsubsection{\texorpdfstring{TRANSACTION\_SUCCESSFUL}{TRANSACTION\_SUCCESSFUL}}
+{\footnotesize\ttfamily \#define T\+R\+A\+N\+S\+A\+C\+T\+I\+O\+N\+\_\+\+S\+U\+C\+C\+E\+S\+S\+F\+UL~0}
+
+
+
+Definition at line 55 of file i2c.\+h.
+
+
+
+\subsection{Typedef Documentation}
+\mbox{\Hypertarget{i2c_8h_a8b9b6c6a900b8e4a9ca7c41f6cf1d6fa}\label{i2c_8h_a8b9b6c6a900b8e4a9ca7c41f6cf1d6fa}} 
+\index{i2c.h@{i2c.h}!i2c\_transaction\_t@{i2c\_transaction\_t}}
+\index{i2c\_transaction\_t@{i2c\_transaction\_t}!i2c.h@{i2c.h}}
+\subsubsection{\texorpdfstring{i2c\_transaction\_t}{i2c\_transaction\_t}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structi2c__transaction}{i2c\+\_\+transaction}} \mbox{\hyperlink{i2c_8h_a8b9b6c6a900b8e4a9ca7c41f6cf1d6fa}{i2c\+\_\+transaction\+\_\+t}}}
+
+
+
+Definition at line 52 of file i2c.\+h.
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{i2c_8h_a51d2a5e4a644eb730fec49e670a058d9}\label{i2c_8h_a51d2a5e4a644eb730fec49e670a058d9}} 
+\index{i2c.h@{i2c.h}!hal\_I2C\_Disable@{hal\_I2C\_Disable}}
+\index{hal\_I2C\_Disable@{hal\_I2C\_Disable}!i2c.h@{i2c.h}}
+\subsubsection{\texorpdfstring{hal\_I2C\_Disable()}{hal\_I2C\_Disable()}}
+{\footnotesize\ttfamily void hal\+\_\+\+I2\+C\+\_\+\+Disable (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{channel }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{i2c_8h_a2940a001b3d45561c99c9dfc5046b997}\label{i2c_8h_a2940a001b3d45561c99c9dfc5046b997}} 
+\index{i2c.h@{i2c.h}!hal\_I2C\_DisableInterrupts@{hal\_I2C\_DisableInterrupts}}
+\index{hal\_I2C\_DisableInterrupts@{hal\_I2C\_DisableInterrupts}!i2c.h@{i2c.h}}
+\subsubsection{\texorpdfstring{hal\_I2C\_DisableInterrupts()}{hal\_I2C\_DisableInterrupts()}}
+{\footnotesize\ttfamily void hal\+\_\+\+I2\+C\+\_\+\+Disable\+Interrupts (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{channel }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{i2c_8h_ac77da456b29de453f0348aea0711b723}\label{i2c_8h_ac77da456b29de453f0348aea0711b723}} 
+\index{i2c.h@{i2c.h}!hal\_I2C\_Enable@{hal\_I2C\_Enable}}
+\index{hal\_I2C\_Enable@{hal\_I2C\_Enable}!i2c.h@{i2c.h}}
+\subsubsection{\texorpdfstring{hal\_I2C\_Enable()}{hal\_I2C\_Enable()}}
+{\footnotesize\ttfamily void hal\+\_\+\+I2\+C\+\_\+\+Enable (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{channel }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{i2c_8h_aeb7963a4ca570e98f01e98832033243a}\label{i2c_8h_aeb7963a4ca570e98f01e98832033243a}} 
+\index{i2c.h@{i2c.h}!hal\_I2C\_EnableInterrupts@{hal\_I2C\_EnableInterrupts}}
+\index{hal\_I2C\_EnableInterrupts@{hal\_I2C\_EnableInterrupts}!i2c.h@{i2c.h}}
+\subsubsection{\texorpdfstring{hal\_I2C\_EnableInterrupts()}{hal\_I2C\_EnableInterrupts()}}
+{\footnotesize\ttfamily void hal\+\_\+\+I2\+C\+\_\+\+Enable\+Interrupts (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{channel }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{i2c_8h_ab3ed2134b647ccb3ca01d69fe398381e}\label{i2c_8h_ab3ed2134b647ccb3ca01d69fe398381e}} 
+\index{i2c.h@{i2c.h}!hal\_I2C\_Init@{hal\_I2C\_Init}}
+\index{hal\_I2C\_Init@{hal\_I2C\_Init}!i2c.h@{i2c.h}}
+\subsubsection{\texorpdfstring{hal\_I2C\_Init()}{hal\_I2C\_Init()}}
+{\footnotesize\ttfamily void hal\+\_\+\+I2\+C\+\_\+\+Init (\begin{DoxyParamCaption}\item[{i2c\+\_\+settings\+\_\+t $\ast$}]{settings }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{i2c_8h_a7493828162acc239928108be6150295b}\label{i2c_8h_a7493828162acc239928108be6150295b}} 
+\index{i2c.h@{i2c.h}!hal\_I2C\_SendStart@{hal\_I2C\_SendStart}}
+\index{hal\_I2C\_SendStart@{hal\_I2C\_SendStart}!i2c.h@{i2c.h}}
+\subsubsection{\texorpdfstring{hal\_I2C\_SendStart()}{hal\_I2C\_SendStart()}}
+{\footnotesize\ttfamily void hal\+\_\+\+I2\+C\+\_\+\+Send\+Start (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{channel }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{i2c_8h_ab74693bbfaad41fc41d9fb10912a0321}\label{i2c_8h_ab74693bbfaad41fc41d9fb10912a0321}} 
+\index{i2c.h@{i2c.h}!I2C\_GetRxSize@{I2C\_GetRxSize}}
+\index{I2C\_GetRxSize@{I2C\_GetRxSize}!i2c.h@{i2c.h}}
+\subsubsection{\texorpdfstring{I2C\_GetRxSize()}{I2C\_GetRxSize()}}
+{\footnotesize\ttfamily uint8\+\_\+t I2\+C\+\_\+\+Get\+Rx\+Size (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{channel }\end{DoxyParamCaption})}
+
+
+
+Definition at line 211 of file i2c.\+c.
+
+\mbox{\Hypertarget{i2c_8h_a577120aa1805d66914426aaae451e969}\label{i2c_8h_a577120aa1805d66914426aaae451e969}} 
+\index{i2c.h@{i2c.h}!I2C\_GetSlaveAddress@{I2C\_GetSlaveAddress}}
+\index{I2C\_GetSlaveAddress@{I2C\_GetSlaveAddress}!i2c.h@{i2c.h}}
+\subsubsection{\texorpdfstring{I2C\_GetSlaveAddress()}{I2C\_GetSlaveAddress()}}
+{\footnotesize\ttfamily uint16\+\_\+t I2\+C\+\_\+\+Get\+Slave\+Address (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{channel }\end{DoxyParamCaption})}
+
+
+
+Definition at line 195 of file i2c.\+c.
+
+\mbox{\Hypertarget{i2c_8h_aa142664dfdd2e7e60fed3af928f6d260}\label{i2c_8h_aa142664dfdd2e7e60fed3af928f6d260}} 
+\index{i2c.h@{i2c.h}!I2C\_GetStayActive@{I2C\_GetStayActive}}
+\index{I2C\_GetStayActive@{I2C\_GetStayActive}!i2c.h@{i2c.h}}
+\subsubsection{\texorpdfstring{I2C\_GetStayActive()}{I2C\_GetStayActive()}}
+{\footnotesize\ttfamily uint8\+\_\+t I2\+C\+\_\+\+Get\+Stay\+Active (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{channel }\end{DoxyParamCaption})}
+
+
+
+Definition at line 215 of file i2c.\+c.
+
+\mbox{\Hypertarget{i2c_8h_a147ba57b31175418241c0abb7fcdf864}\label{i2c_8h_a147ba57b31175418241c0abb7fcdf864}} 
+\index{i2c.h@{i2c.h}!I2C\_GetTxByte@{I2C\_GetTxByte}}
+\index{I2C\_GetTxByte@{I2C\_GetTxByte}!i2c.h@{i2c.h}}
+\subsubsection{\texorpdfstring{I2C\_GetTxByte()}{I2C\_GetTxByte()}}
+{\footnotesize\ttfamily uint8\+\_\+t I2\+C\+\_\+\+Get\+Tx\+Byte (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{channel }\end{DoxyParamCaption})}
+
+
+
+Definition at line 203 of file i2c.\+c.
+
+\mbox{\Hypertarget{i2c_8h_abc19f34cf43ee55af95b439386bdd058}\label{i2c_8h_abc19f34cf43ee55af95b439386bdd058}} 
+\index{i2c.h@{i2c.h}!I2C\_GetTxSize@{I2C\_GetTxSize}}
+\index{I2C\_GetTxSize@{I2C\_GetTxSize}!i2c.h@{i2c.h}}
+\subsubsection{\texorpdfstring{I2C\_GetTxSize()}{I2C\_GetTxSize()}}
+{\footnotesize\ttfamily uint8\+\_\+t I2\+C\+\_\+\+Get\+Tx\+Size (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{channel }\end{DoxyParamCaption})}
+
+
+
+Definition at line 207 of file i2c.\+c.
+
+\mbox{\Hypertarget{i2c_8h_a91e920a8b4ea820781519688c4539bb4}\label{i2c_8h_a91e920a8b4ea820781519688c4539bb4}} 
+\index{i2c.h@{i2c.h}!I2C\_Init@{I2C\_Init}}
+\index{I2C\_Init@{I2C\_Init}!i2c.h@{i2c.h}}
+\subsubsection{\texorpdfstring{I2C\_Init()}{I2C\_Init()}}
+{\footnotesize\ttfamily void I2\+C\+\_\+\+Init (\begin{DoxyParamCaption}\item[{i2c\+\_\+settings\+\_\+t $\ast$}]{i2c\+\_\+settings }\end{DoxyParamCaption})}
+
+
+
+Definition at line 88 of file i2c.\+c.
+
+\mbox{\Hypertarget{i2c_8h_af374787210c5717ce5591ddb49968253}\label{i2c_8h_af374787210c5717ce5591ddb49968253}} 
+\index{i2c.h@{i2c.h}!I2C\_Rx\_Handler@{I2C\_Rx\_Handler}}
+\index{I2C\_Rx\_Handler@{I2C\_Rx\_Handler}!i2c.h@{i2c.h}}
+\subsubsection{\texorpdfstring{I2C\_Rx\_Handler()}{I2C\_Rx\_Handler()}}
+{\footnotesize\ttfamily void I2\+C\+\_\+\+Rx\+\_\+\+Handler (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{channel,  }\item[{uint8\+\_\+t}]{byte }\end{DoxyParamCaption})}
+
+
+
+Definition at line 199 of file i2c.\+c.
+
+\mbox{\Hypertarget{i2c_8h_abf53f7cb2b18ef3b3702bd8828c3c5f5}\label{i2c_8h_abf53f7cb2b18ef3b3702bd8828c3c5f5}} 
+\index{i2c.h@{i2c.h}!I2C\_Transact@{I2C\_Transact}}
+\index{I2C\_Transact@{I2C\_Transact}!i2c.h@{i2c.h}}
+\subsubsection{\texorpdfstring{I2C\_Transact()}{I2C\_Transact()}}
+{\footnotesize\ttfamily void I2\+C\+\_\+\+Transact (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{i2c_8h_a8b9b6c6a900b8e4a9ca7c41f6cf1d6fa}{i2c\+\_\+transaction\+\_\+t}} $\ast$}]{transaction }\end{DoxyParamCaption})}
+
+
+
+Definition at line 131 of file i2c.\+c.
+
+\mbox{\Hypertarget{i2c_8h_aaaef3a860a7e3b889cbcb68674f26fd1}\label{i2c_8h_aaaef3a860a7e3b889cbcb68674f26fd1}} 
+\index{i2c.h@{i2c.h}!I2C\_TransactionFail@{I2C\_TransactionFail}}
+\index{I2C\_TransactionFail@{I2C\_TransactionFail}!i2c.h@{i2c.h}}
+\subsubsection{\texorpdfstring{I2C\_TransactionFail()}{I2C\_TransactionFail()}}
+{\footnotesize\ttfamily void I2\+C\+\_\+\+Transaction\+Fail (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{channel }\end{DoxyParamCaption})}
+
+
+
+Definition at line 225 of file i2c.\+c.
+
+\mbox{\Hypertarget{i2c_8h_afb942cc37be00ecd3865f3ac5fdee58a}\label{i2c_8h_afb942cc37be00ecd3865f3ac5fdee58a}} 
+\index{i2c.h@{i2c.h}!I2C\_TransactionSuccess@{I2C\_TransactionSuccess}}
+\index{I2C\_TransactionSuccess@{I2C\_TransactionSuccess}!i2c.h@{i2c.h}}
+\subsubsection{\texorpdfstring{I2C\_TransactionSuccess()}{I2C\_TransactionSuccess()}}
+{\footnotesize\ttfamily void I2\+C\+\_\+\+Transaction\+Success (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{channel }\end{DoxyParamCaption})}
+
+
+
+Definition at line 219 of file i2c.\+c.
+
+\mbox{\Hypertarget{i2c_8h_ac1c58b7fd5e1c5a7dcc1c4f9af21288a}\label{i2c_8h_ac1c58b7fd5e1c5a7dcc1c4f9af21288a}} 
+\index{i2c.h@{i2c.h}!I2C\_Tx\_Handler@{I2C\_Tx\_Handler}}
+\index{I2C\_Tx\_Handler@{I2C\_Tx\_Handler}!i2c.h@{i2c.h}}
+\subsubsection{\texorpdfstring{I2C\_Tx\_Handler()}{I2C\_Tx\_Handler()}}
+{\footnotesize\ttfamily uint8\+\_\+t I2\+C\+\_\+\+Tx\+\_\+\+Handler (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{channel }\end{DoxyParamCaption})}
+

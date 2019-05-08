@@ -1,0 +1,515 @@
+\hypertarget{main_8c}{}\section{C\+:/\+Users/sglas/embedded\+Software/accel\+Test/main.c File Reference}
+\label{main_8c}\index{C:/Users/sglas/embeddedSoftware/accelTest/main.c@{C:/Users/sglas/embeddedSoftware/accelTest/main.c}}
+
+
+Interface with n\+R\+F24 module and accelerometer. Detect an impact using the accelerometer and report back trip or access message using thief module depending on results.  
+
+
+{\ttfamily \#include $<$msp430.\+h$>$}\newline
+{\ttfamily \#include $<$math.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}library.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}project\+\_\+settings.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}nrf24.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}nrf24network.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}timing.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}subsystem.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}task.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}uart.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}i2c.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}spi.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}accelerometer.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}hal\+\_\+general.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}thief.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}thief\+\_\+brainframe.\+h\char`\"{}}\newline
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{main_8c_a6904ff69ec4ae07d1c4a0074759e26df}{L\+O\+G\+\_\+\+A\+C\+C\+E\+L\+\_\+\+E\+V\+E\+N\+TS}}
+\begin{DoxyCompactList}\small\item\em Define if you want logging of accelerometer events. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{main_8c_ab6b53d6f84e5f6ad10d6d94df9b7e4b3}{G\+P\+I\+O\+\_\+\+L\+E\+D1}}~B\+I\+T0
+\item 
+\#define \mbox{\hyperlink{main_8c_aa1ba41c4c7f6691333f191eadc136adc}{G\+P\+I\+O\+\_\+\+L\+E\+D1\+\_\+\+O\+UT}}~P1\+O\+UT
+\item 
+\#define \mbox{\hyperlink{main_8c_a25fd072ae272cea5f42897a7180b4f32}{G\+P\+I\+O\+\_\+\+L\+E\+D1\+\_\+\+D\+IR}}~P1\+D\+IR
+\item 
+\#define \mbox{\hyperlink{main_8c_a09f1014df1694b89be1e1bd46cd499b1}{G\+P\+I\+O\+\_\+\+L\+E\+D2}}~B\+I\+T7
+\item 
+\#define \mbox{\hyperlink{main_8c_ac16b1aacf42ef5021cca577f7051758f}{G\+P\+I\+O\+\_\+\+L\+E\+D2\+\_\+\+O\+UT}}~P4\+O\+UT
+\item 
+\#define \mbox{\hyperlink{main_8c_a14c28053b3d8964085949d7cedf23dbb}{G\+P\+I\+O\+\_\+\+L\+E\+D2\+\_\+\+D\+IR}}~P4\+D\+IR
+\item 
+\#define \mbox{\hyperlink{main_8c_a9f4070ab2aa025206d2192c01cd41d85}{T\+A\+S\+K\+\_\+\+V\+E\+R\+S\+I\+ON}}~(version\+\_\+t)0x01010014u
+\item 
+\#define \mbox{\hyperlink{main_8c_aa8cfc4e4ae1507fb0b4d3d4c9e9d4077}{I2\+C\+\_\+\+C\+L\+O\+C\+K\+\_\+\+S\+P\+E\+ED}}~100000
+\item 
+\#define \mbox{\hyperlink{main_8c_a06eaefe201f5984ac97a56b3924e1b62}{A\+C\+C\+E\+L\+\_\+\+P\+E\+R\+I\+OD}}~200
+\item 
+\#define \mbox{\hyperlink{main_8c_ac0611b22cb69ae37b84d3e1891a3e2dc}{T\+R\+A\+P\+\_\+\+G\+R\+A\+CE}}~2000
+\item 
+\#define \mbox{\hyperlink{main_8c_a69d76a06a693bf502de0a1fccd2a8b67}{T\+R\+A\+P\+\_\+\+A\+C\+C\+E\+SS}}~6000
+\item 
+\#define \mbox{\hyperlink{main_8c_a4b259dd6aec47bf89b485ae99ec2d33d}{C\+O\+L\+L\+I\+S\+I\+O\+N\+\_\+\+T\+H\+R\+E\+S\+H\+O\+LD}}~0.\+35
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{main_8c_afe7a49ab9879bd7044b35eb779f30712}{Init\+G\+P\+IO}} (void)
+\item 
+void \mbox{\hyperlink{main_8c_ad73ee35821c38978d277d42015a9d01a}{Blink\+L\+ED}} (uint8\+\_\+t type)
+\item 
+void \mbox{\hyperlink{main_8c_a9816b860e4043098f5fc2a516140bb5c}{Set\+Blink\+Frequency}} (void)
+\begin{DoxyCompactList}\small\item\em This function is scheduled by the task scheduler at a specific period When this function is called, the task scheduler queues the L\+ED to blink using the Blink\+L\+ED abstracted function. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{main_8c_a162f6ca558938b7b4b5f6f2cd455d719}{Callback\+Accelerometer}} (float x, float y, float z)
+\begin{DoxyCompactList}\small\item\em Accelerometer callback function. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{main_8c_a68f6fa78ca7363063901a374e2694186}{R\+F1\+\_\+\+CE}} (uint8\+\_\+t out)
+\begin{DoxyCompactList}\small\item\em This function is provided to the network layer in the init function and is used to control the Chip Enable pin on the radio. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{main_8c_a774382152ae55705c210788d21c85d48}{R\+F1\+\_\+\+C\+SN}} (uint8\+\_\+t out)
+\begin{DoxyCompactList}\small\item\em This function is provided to the network layer in the init function and is used to control the Chip Select pin on the radio. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{main_8c_a52353d23ef8aff5bd49f82de22f6167f}{R\+F1\+\_\+\+Poll\+I\+RQ}} (void)
+\begin{DoxyCompactList}\small\item\em Method to poll the interrupt pin and see if an interrupt has occured. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{main_8c_a9387a6aa9dce14b7a6982d5f99812a31}{R\+F1\+\_\+\+Init}} (void)
+\item 
+void \mbox{\hyperlink{main_8c_a1dbb4b23ce0ca75aea47bd8dfd86748c}{R\+F1\+\_\+\+Rx\+Payload\+Handler}} (uint8\+\_\+t $\ast$data, uint8\+\_\+t length)
+\item 
+void \mbox{\hyperlink{main_8c_aab143470afe322e8338915b3afe1496d}{R\+F1\+\_\+\+Ack\+Payload\+Handler}} (uint8\+\_\+t $\ast$data, uint8\+\_\+t length)
+\item 
+void \mbox{\hyperlink{main_8c_aef715b2a38aff73ca19d0fcda4c82453}{R\+F1\+\_\+\+Ack\+Received\+Handler}} (void)
+\item 
+void \mbox{\hyperlink{main_8c_a95b147cf5cd9227524af96bf9cdea713}{R\+F1\+\_\+\+Max\+Retries\+Handler}} (void)
+\item 
+void \mbox{\hyperlink{main_8c_a2e3afe0db98e4befe374adbf8973cc19}{This\+Node\+\_\+\+Test\+Msg\+Handler}} (uint8\+\_\+t $\ast$data, uint8\+\_\+t length, uint8\+\_\+t from)
+\item 
+void \mbox{\hyperlink{main_8c_ac68418387648f0d3d13178812ed161ca}{Trap\+\_\+\+Arm}} (void)
+\begin{DoxyCompactList}\small\item\em Arm the trap if the message is received by thief module. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{main_8c_a482faf66d4098f48057207aade59c6d5}{Trap\+\_\+\+Arm\+Grace\+Period}} (void)
+\begin{DoxyCompactList}\small\item\em Set the flag to arm the trap after the grace period. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{main_8c_ae7659ff399938c586e7913cad429a30e}{Trap\+\_\+\+Disarm}} (void)
+\begin{DoxyCompactList}\small\item\em Disarm the trap. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{main_8c_acaf06d711c59b2ab7cf6ad2b6d10942f}{Trap\+\_\+\+Access}} (void)
+\begin{DoxyCompactList}\small\item\em Trap access function. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{main_8c_adc0625e5cdf9327da47898e8f9be15d1}{init\+Clock\+To16\+M\+Hz}} ()
+\item 
+void \mbox{\hyperlink{main_8c_a64b878d501fb34301b9fd91173299318}{Set\+Clk24\+M\+Hz}} (void)
+\item 
+uint16\+\_\+t \mbox{\hyperlink{main_8c_a9e2f896cacf3e5f405eb778dd83b4587}{set\+V\+Core\+Up}} (uint8\+\_\+t level)
+\item 
+uint8\+\_\+t \mbox{\hyperlink{main_8c_a3dee200ed79c1a01732727be8cd4dda7}{increase\+V\+Core\+To\+Level2}} ()
+\item 
+int \mbox{\hyperlink{main_8c_a840291bc02cba5474a4cb46a9b9566fe}{main}} (void)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{main_8c_a0723704782e3bd0c030e58e7e45b0434}{g\+Trap\+Armed}} = 0
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Interface with n\+R\+F24 module and accelerometer. Detect an impact using the accelerometer and report back trip or access message using thief module depending on results. 
+
+\begin{DoxyAuthor}{Author}
+Stephen Glass 
+
+Lonnie Souder 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+May 5 2019 
+\end{DoxyDate}
+\begin{DoxySeeAlso}{See also}
+\href{https://github.com/muhlbaier/embedded-software}{\texttt{ https\+://github.\+com/muhlbaier/embedded-\/software}}
+\end{DoxySeeAlso}
+Dependencies\+: embedded-\/software library Board\+: M\+S\+P430\+F5529 
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{main_8c_a06eaefe201f5984ac97a56b3924e1b62}\label{main_8c_a06eaefe201f5984ac97a56b3924e1b62}} 
+\index{main.c@{main.c}!ACCEL\_PERIOD@{ACCEL\_PERIOD}}
+\index{ACCEL\_PERIOD@{ACCEL\_PERIOD}!main.c@{main.c}}
+\subsubsection{\texorpdfstring{ACCEL\_PERIOD}{ACCEL\_PERIOD}}
+{\footnotesize\ttfamily \#define A\+C\+C\+E\+L\+\_\+\+P\+E\+R\+I\+OD~200}
+
+
+
+Definition at line 184 of file main.\+c.
+
+\mbox{\Hypertarget{main_8c_a4b259dd6aec47bf89b485ae99ec2d33d}\label{main_8c_a4b259dd6aec47bf89b485ae99ec2d33d}} 
+\index{main.c@{main.c}!COLLISION\_THRESHOLD@{COLLISION\_THRESHOLD}}
+\index{COLLISION\_THRESHOLD@{COLLISION\_THRESHOLD}!main.c@{main.c}}
+\subsubsection{\texorpdfstring{COLLISION\_THRESHOLD}{COLLISION\_THRESHOLD}}
+{\footnotesize\ttfamily \#define C\+O\+L\+L\+I\+S\+I\+O\+N\+\_\+\+T\+H\+R\+E\+S\+H\+O\+LD~0.\+35}
+
+Threshold for collision detection. A lower threshold results in greater sensitivity for detecting a collision with a solid object. The default threshold is calibrated for \char`\"{}medium speed\char`\"{} impact with a solid table. 
+
+Definition at line 193 of file main.\+c.
+
+\mbox{\Hypertarget{main_8c_ab6b53d6f84e5f6ad10d6d94df9b7e4b3}\label{main_8c_ab6b53d6f84e5f6ad10d6d94df9b7e4b3}} 
+\index{main.c@{main.c}!GPIO\_LED1@{GPIO\_LED1}}
+\index{GPIO\_LED1@{GPIO\_LED1}!main.c@{main.c}}
+\subsubsection{\texorpdfstring{GPIO\_LED1}{GPIO\_LED1}}
+{\footnotesize\ttfamily \#define G\+P\+I\+O\+\_\+\+L\+E\+D1~B\+I\+T0}
+
+
+
+Definition at line 173 of file main.\+c.
+
+\mbox{\Hypertarget{main_8c_a25fd072ae272cea5f42897a7180b4f32}\label{main_8c_a25fd072ae272cea5f42897a7180b4f32}} 
+\index{main.c@{main.c}!GPIO\_LED1\_DIR@{GPIO\_LED1\_DIR}}
+\index{GPIO\_LED1\_DIR@{GPIO\_LED1\_DIR}!main.c@{main.c}}
+\subsubsection{\texorpdfstring{GPIO\_LED1\_DIR}{GPIO\_LED1\_DIR}}
+{\footnotesize\ttfamily \#define G\+P\+I\+O\+\_\+\+L\+E\+D1\+\_\+\+D\+IR~P1\+D\+IR}
+
+
+
+Definition at line 175 of file main.\+c.
+
+\mbox{\Hypertarget{main_8c_aa1ba41c4c7f6691333f191eadc136adc}\label{main_8c_aa1ba41c4c7f6691333f191eadc136adc}} 
+\index{main.c@{main.c}!GPIO\_LED1\_OUT@{GPIO\_LED1\_OUT}}
+\index{GPIO\_LED1\_OUT@{GPIO\_LED1\_OUT}!main.c@{main.c}}
+\subsubsection{\texorpdfstring{GPIO\_LED1\_OUT}{GPIO\_LED1\_OUT}}
+{\footnotesize\ttfamily \#define G\+P\+I\+O\+\_\+\+L\+E\+D1\+\_\+\+O\+UT~P1\+O\+UT}
+
+
+
+Definition at line 174 of file main.\+c.
+
+\mbox{\Hypertarget{main_8c_a09f1014df1694b89be1e1bd46cd499b1}\label{main_8c_a09f1014df1694b89be1e1bd46cd499b1}} 
+\index{main.c@{main.c}!GPIO\_LED2@{GPIO\_LED2}}
+\index{GPIO\_LED2@{GPIO\_LED2}!main.c@{main.c}}
+\subsubsection{\texorpdfstring{GPIO\_LED2}{GPIO\_LED2}}
+{\footnotesize\ttfamily \#define G\+P\+I\+O\+\_\+\+L\+E\+D2~B\+I\+T7}
+
+
+
+Definition at line 177 of file main.\+c.
+
+\mbox{\Hypertarget{main_8c_a14c28053b3d8964085949d7cedf23dbb}\label{main_8c_a14c28053b3d8964085949d7cedf23dbb}} 
+\index{main.c@{main.c}!GPIO\_LED2\_DIR@{GPIO\_LED2\_DIR}}
+\index{GPIO\_LED2\_DIR@{GPIO\_LED2\_DIR}!main.c@{main.c}}
+\subsubsection{\texorpdfstring{GPIO\_LED2\_DIR}{GPIO\_LED2\_DIR}}
+{\footnotesize\ttfamily \#define G\+P\+I\+O\+\_\+\+L\+E\+D2\+\_\+\+D\+IR~P4\+D\+IR}
+
+
+
+Definition at line 179 of file main.\+c.
+
+\mbox{\Hypertarget{main_8c_ac16b1aacf42ef5021cca577f7051758f}\label{main_8c_ac16b1aacf42ef5021cca577f7051758f}} 
+\index{main.c@{main.c}!GPIO\_LED2\_OUT@{GPIO\_LED2\_OUT}}
+\index{GPIO\_LED2\_OUT@{GPIO\_LED2\_OUT}!main.c@{main.c}}
+\subsubsection{\texorpdfstring{GPIO\_LED2\_OUT}{GPIO\_LED2\_OUT}}
+{\footnotesize\ttfamily \#define G\+P\+I\+O\+\_\+\+L\+E\+D2\+\_\+\+O\+UT~P4\+O\+UT}
+
+
+
+Definition at line 178 of file main.\+c.
+
+\mbox{\Hypertarget{main_8c_aa8cfc4e4ae1507fb0b4d3d4c9e9d4077}\label{main_8c_aa8cfc4e4ae1507fb0b4d3d4c9e9d4077}} 
+\index{main.c@{main.c}!I2C\_CLOCK\_SPEED@{I2C\_CLOCK\_SPEED}}
+\index{I2C\_CLOCK\_SPEED@{I2C\_CLOCK\_SPEED}!main.c@{main.c}}
+\subsubsection{\texorpdfstring{I2C\_CLOCK\_SPEED}{I2C\_CLOCK\_SPEED}}
+{\footnotesize\ttfamily \#define I2\+C\+\_\+\+C\+L\+O\+C\+K\+\_\+\+S\+P\+E\+ED~100000}
+
+
+
+Definition at line 182 of file main.\+c.
+
+\mbox{\Hypertarget{main_8c_a6904ff69ec4ae07d1c4a0074759e26df}\label{main_8c_a6904ff69ec4ae07d1c4a0074759e26df}} 
+\index{main.c@{main.c}!LOG\_ACCEL\_EVENTS@{LOG\_ACCEL\_EVENTS}}
+\index{LOG\_ACCEL\_EVENTS@{LOG\_ACCEL\_EVENTS}!main.c@{main.c}}
+\subsubsection{\texorpdfstring{LOG\_ACCEL\_EVENTS}{LOG\_ACCEL\_EVENTS}}
+{\footnotesize\ttfamily \#define L\+O\+G\+\_\+\+A\+C\+C\+E\+L\+\_\+\+E\+V\+E\+N\+TS}
+
+
+
+Define if you want logging of accelerometer events. 
+
+
+
+Definition at line 171 of file main.\+c.
+
+\mbox{\Hypertarget{main_8c_a9f4070ab2aa025206d2192c01cd41d85}\label{main_8c_a9f4070ab2aa025206d2192c01cd41d85}} 
+\index{main.c@{main.c}!TASK\_VERSION@{TASK\_VERSION}}
+\index{TASK\_VERSION@{TASK\_VERSION}!main.c@{main.c}}
+\subsubsection{\texorpdfstring{TASK\_VERSION}{TASK\_VERSION}}
+{\footnotesize\ttfamily \#define T\+A\+S\+K\+\_\+\+V\+E\+R\+S\+I\+ON~(version\+\_\+t)0x01010014u}
+
+
+
+Definition at line 181 of file main.\+c.
+
+\mbox{\Hypertarget{main_8c_a69d76a06a693bf502de0a1fccd2a8b67}\label{main_8c_a69d76a06a693bf502de0a1fccd2a8b67}} 
+\index{main.c@{main.c}!TRAP\_ACCESS@{TRAP\_ACCESS}}
+\index{TRAP\_ACCESS@{TRAP\_ACCESS}!main.c@{main.c}}
+\subsubsection{\texorpdfstring{TRAP\_ACCESS}{TRAP\_ACCESS}}
+{\footnotesize\ttfamily \#define T\+R\+A\+P\+\_\+\+A\+C\+C\+E\+SS~6000}
+
+
+
+Definition at line 186 of file main.\+c.
+
+\mbox{\Hypertarget{main_8c_ac0611b22cb69ae37b84d3e1891a3e2dc}\label{main_8c_ac0611b22cb69ae37b84d3e1891a3e2dc}} 
+\index{main.c@{main.c}!TRAP\_GRACE@{TRAP\_GRACE}}
+\index{TRAP\_GRACE@{TRAP\_GRACE}!main.c@{main.c}}
+\subsubsection{\texorpdfstring{TRAP\_GRACE}{TRAP\_GRACE}}
+{\footnotesize\ttfamily \#define T\+R\+A\+P\+\_\+\+G\+R\+A\+CE~2000}
+
+
+
+Definition at line 185 of file main.\+c.
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{main_8c_ad73ee35821c38978d277d42015a9d01a}\label{main_8c_ad73ee35821c38978d277d42015a9d01a}} 
+\index{main.c@{main.c}!BlinkLED@{BlinkLED}}
+\index{BlinkLED@{BlinkLED}!main.c@{main.c}}
+\subsubsection{\texorpdfstring{BlinkLED()}{BlinkLED()}}
+{\footnotesize\ttfamily void Blink\+L\+ED (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{type }\end{DoxyParamCaption})}
+
+
+
+Definition at line 236 of file main.\+c.
+
+\mbox{\Hypertarget{main_8c_a162f6ca558938b7b4b5f6f2cd455d719}\label{main_8c_a162f6ca558938b7b4b5f6f2cd455d719}} 
+\index{main.c@{main.c}!CallbackAccelerometer@{CallbackAccelerometer}}
+\index{CallbackAccelerometer@{CallbackAccelerometer}!main.c@{main.c}}
+\subsubsection{\texorpdfstring{CallbackAccelerometer()}{CallbackAccelerometer()}}
+{\footnotesize\ttfamily void Callback\+Accelerometer (\begin{DoxyParamCaption}\item[{float}]{x,  }\item[{float}]{y,  }\item[{float}]{z }\end{DoxyParamCaption})}
+
+
+
+Accelerometer callback function. 
+
+
+
+Definition at line 355 of file main.\+c.
+
+\mbox{\Hypertarget{main_8c_a3dee200ed79c1a01732727be8cd4dda7}\label{main_8c_a3dee200ed79c1a01732727be8cd4dda7}} 
+\index{main.c@{main.c}!increaseVCoreToLevel2@{increaseVCoreToLevel2}}
+\index{increaseVCoreToLevel2@{increaseVCoreToLevel2}!main.c@{main.c}}
+\subsubsection{\texorpdfstring{increaseVCoreToLevel2()}{increaseVCoreToLevel2()}}
+{\footnotesize\ttfamily uint8\+\_\+t increase\+V\+Core\+To\+Level2 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 575 of file main.\+c.
+
+\mbox{\Hypertarget{main_8c_adc0625e5cdf9327da47898e8f9be15d1}\label{main_8c_adc0625e5cdf9327da47898e8f9be15d1}} 
+\index{main.c@{main.c}!initClockTo16MHz@{initClockTo16MHz}}
+\index{initClockTo16MHz@{initClockTo16MHz}!main.c@{main.c}}
+\subsubsection{\texorpdfstring{initClockTo16MHz()}{initClockTo16MHz()}}
+{\footnotesize\ttfamily void init\+Clock\+To16\+M\+Hz (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 405 of file main.\+c.
+
+\mbox{\Hypertarget{main_8c_afe7a49ab9879bd7044b35eb779f30712}\label{main_8c_afe7a49ab9879bd7044b35eb779f30712}} 
+\index{main.c@{main.c}!InitGPIO@{InitGPIO}}
+\index{InitGPIO@{InitGPIO}!main.c@{main.c}}
+\subsubsection{\texorpdfstring{InitGPIO()}{InitGPIO()}}
+{\footnotesize\ttfamily void Init\+G\+P\+IO (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 227 of file main.\+c.
+
+\mbox{\Hypertarget{main_8c_a840291bc02cba5474a4cb46a9b9566fe}\label{main_8c_a840291bc02cba5474a4cb46a9b9566fe}} 
+\index{main.c@{main.c}!main@{main}}
+\index{main@{main}!main.c@{main.c}}
+\subsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 260 of file main.\+c.
+
+\mbox{\Hypertarget{main_8c_aab143470afe322e8338915b3afe1496d}\label{main_8c_aab143470afe322e8338915b3afe1496d}} 
+\index{main.c@{main.c}!RF1\_AckPayloadHandler@{RF1\_AckPayloadHandler}}
+\index{RF1\_AckPayloadHandler@{RF1\_AckPayloadHandler}!main.c@{main.c}}
+\subsubsection{\texorpdfstring{RF1\_AckPayloadHandler()}{RF1\_AckPayloadHandler()}}
+{\footnotesize\ttfamily void R\+F1\+\_\+\+Ack\+Payload\+Handler (\begin{DoxyParamCaption}\item[{uint8\+\_\+t $\ast$}]{data,  }\item[{uint8\+\_\+t}]{length }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{main_8c_aef715b2a38aff73ca19d0fcda4c82453}\label{main_8c_aef715b2a38aff73ca19d0fcda4c82453}} 
+\index{main.c@{main.c}!RF1\_AckReceivedHandler@{RF1\_AckReceivedHandler}}
+\index{RF1\_AckReceivedHandler@{RF1\_AckReceivedHandler}!main.c@{main.c}}
+\subsubsection{\texorpdfstring{RF1\_AckReceivedHandler()}{RF1\_AckReceivedHandler()}}
+{\footnotesize\ttfamily void R\+F1\+\_\+\+Ack\+Received\+Handler (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{main_8c_a68f6fa78ca7363063901a374e2694186}\label{main_8c_a68f6fa78ca7363063901a374e2694186}} 
+\index{main.c@{main.c}!RF1\_CE@{RF1\_CE}}
+\index{RF1\_CE@{RF1\_CE}!main.c@{main.c}}
+\subsubsection{\texorpdfstring{RF1\_CE()}{RF1\_CE()}}
+{\footnotesize\ttfamily void R\+F1\+\_\+\+CE (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{out }\end{DoxyParamCaption})}
+
+
+
+This function is provided to the network layer in the init function and is used to control the Chip Enable pin on the radio. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em out} & output pin \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 378 of file main.\+c.
+
+\mbox{\Hypertarget{main_8c_a774382152ae55705c210788d21c85d48}\label{main_8c_a774382152ae55705c210788d21c85d48}} 
+\index{main.c@{main.c}!RF1\_CSN@{RF1\_CSN}}
+\index{RF1\_CSN@{RF1\_CSN}!main.c@{main.c}}
+\subsubsection{\texorpdfstring{RF1\_CSN()}{RF1\_CSN()}}
+{\footnotesize\ttfamily void R\+F1\+\_\+\+C\+SN (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{out }\end{DoxyParamCaption})}
+
+
+
+This function is provided to the network layer in the init function and is used to control the Chip Select pin on the radio. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em out} & output pin \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 386 of file main.\+c.
+
+\mbox{\Hypertarget{main_8c_a9387a6aa9dce14b7a6982d5f99812a31}\label{main_8c_a9387a6aa9dce14b7a6982d5f99812a31}} 
+\index{main.c@{main.c}!RF1\_Init@{RF1\_Init}}
+\index{RF1\_Init@{RF1\_Init}!main.c@{main.c}}
+\subsubsection{\texorpdfstring{RF1\_Init()}{RF1\_Init()}}
+{\footnotesize\ttfamily void R\+F1\+\_\+\+Init (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{main_8c_a95b147cf5cd9227524af96bf9cdea713}\label{main_8c_a95b147cf5cd9227524af96bf9cdea713}} 
+\index{main.c@{main.c}!RF1\_MaxRetriesHandler@{RF1\_MaxRetriesHandler}}
+\index{RF1\_MaxRetriesHandler@{RF1\_MaxRetriesHandler}!main.c@{main.c}}
+\subsubsection{\texorpdfstring{RF1\_MaxRetriesHandler()}{RF1\_MaxRetriesHandler()}}
+{\footnotesize\ttfamily void R\+F1\+\_\+\+Max\+Retries\+Handler (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{main_8c_a52353d23ef8aff5bd49f82de22f6167f}\label{main_8c_a52353d23ef8aff5bd49f82de22f6167f}} 
+\index{main.c@{main.c}!RF1\_PollIRQ@{RF1\_PollIRQ}}
+\index{RF1\_PollIRQ@{RF1\_PollIRQ}!main.c@{main.c}}
+\subsubsection{\texorpdfstring{RF1\_PollIRQ()}{RF1\_PollIRQ()}}
+{\footnotesize\ttfamily void R\+F1\+\_\+\+Poll\+I\+RQ (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Method to poll the interrupt pin and see if an interrupt has occured. 
+
+
+
+Definition at line 395 of file main.\+c.
+
+\mbox{\Hypertarget{main_8c_a1dbb4b23ce0ca75aea47bd8dfd86748c}\label{main_8c_a1dbb4b23ce0ca75aea47bd8dfd86748c}} 
+\index{main.c@{main.c}!RF1\_RxPayloadHandler@{RF1\_RxPayloadHandler}}
+\index{RF1\_RxPayloadHandler@{RF1\_RxPayloadHandler}!main.c@{main.c}}
+\subsubsection{\texorpdfstring{RF1\_RxPayloadHandler()}{RF1\_RxPayloadHandler()}}
+{\footnotesize\ttfamily void R\+F1\+\_\+\+Rx\+Payload\+Handler (\begin{DoxyParamCaption}\item[{uint8\+\_\+t $\ast$}]{data,  }\item[{uint8\+\_\+t}]{length }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{main_8c_a9816b860e4043098f5fc2a516140bb5c}\label{main_8c_a9816b860e4043098f5fc2a516140bb5c}} 
+\index{main.c@{main.c}!SetBlinkFrequency@{SetBlinkFrequency}}
+\index{SetBlinkFrequency@{SetBlinkFrequency}!main.c@{main.c}}
+\subsubsection{\texorpdfstring{SetBlinkFrequency()}{SetBlinkFrequency()}}
+{\footnotesize\ttfamily void Set\+Blink\+Frequency (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+This function is scheduled by the task scheduler at a specific period When this function is called, the task scheduler queues the L\+ED to blink using the Blink\+L\+ED abstracted function. 
+
+
+
+Definition at line 256 of file main.\+c.
+
+\mbox{\Hypertarget{main_8c_a64b878d501fb34301b9fd91173299318}\label{main_8c_a64b878d501fb34301b9fd91173299318}} 
+\index{main.c@{main.c}!SetClk24MHz@{SetClk24MHz}}
+\index{SetClk24MHz@{SetClk24MHz}!main.c@{main.c}}
+\subsubsection{\texorpdfstring{SetClk24MHz()}{SetClk24MHz()}}
+{\footnotesize\ttfamily void Set\+Clk24\+M\+Hz (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 599 of file main.\+c.
+
+\mbox{\Hypertarget{main_8c_a9e2f896cacf3e5f405eb778dd83b4587}\label{main_8c_a9e2f896cacf3e5f405eb778dd83b4587}} 
+\index{main.c@{main.c}!setVCoreUp@{setVCoreUp}}
+\index{setVCoreUp@{setVCoreUp}!main.c@{main.c}}
+\subsubsection{\texorpdfstring{setVCoreUp()}{setVCoreUp()}}
+{\footnotesize\ttfamily uint16\+\_\+t set\+V\+Core\+Up (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{level }\end{DoxyParamCaption})}
+
+
+
+Definition at line 432 of file main.\+c.
+
+\mbox{\Hypertarget{main_8c_a2e3afe0db98e4befe374adbf8973cc19}\label{main_8c_a2e3afe0db98e4befe374adbf8973cc19}} 
+\index{main.c@{main.c}!ThisNode\_TestMsgHandler@{ThisNode\_TestMsgHandler}}
+\index{ThisNode\_TestMsgHandler@{ThisNode\_TestMsgHandler}!main.c@{main.c}}
+\subsubsection{\texorpdfstring{ThisNode\_TestMsgHandler()}{ThisNode\_TestMsgHandler()}}
+{\footnotesize\ttfamily void This\+Node\+\_\+\+Test\+Msg\+Handler (\begin{DoxyParamCaption}\item[{uint8\+\_\+t $\ast$}]{data,  }\item[{uint8\+\_\+t}]{length,  }\item[{uint8\+\_\+t}]{from }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{main_8c_acaf06d711c59b2ab7cf6ad2b6d10942f}\label{main_8c_acaf06d711c59b2ab7cf6ad2b6d10942f}} 
+\index{main.c@{main.c}!Trap\_Access@{Trap\_Access}}
+\index{Trap\_Access@{Trap\_Access}!main.c@{main.c}}
+\subsubsection{\texorpdfstring{Trap\_Access()}{Trap\_Access()}}
+{\footnotesize\ttfamily void Trap\+\_\+\+Access (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Trap access function. 
+
+
+
+Definition at line 344 of file main.\+c.
+
+\mbox{\Hypertarget{main_8c_ac68418387648f0d3d13178812ed161ca}\label{main_8c_ac68418387648f0d3d13178812ed161ca}} 
+\index{main.c@{main.c}!Trap\_Arm@{Trap\_Arm}}
+\index{Trap\_Arm@{Trap\_Arm}!main.c@{main.c}}
+\subsubsection{\texorpdfstring{Trap\_Arm()}{Trap\_Arm()}}
+{\footnotesize\ttfamily void Trap\+\_\+\+Arm (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Arm the trap if the message is received by thief module. 
+
+
+
+Definition at line 319 of file main.\+c.
+
+\mbox{\Hypertarget{main_8c_a482faf66d4098f48057207aade59c6d5}\label{main_8c_a482faf66d4098f48057207aade59c6d5}} 
+\index{main.c@{main.c}!Trap\_ArmGracePeriod@{Trap\_ArmGracePeriod}}
+\index{Trap\_ArmGracePeriod@{Trap\_ArmGracePeriod}!main.c@{main.c}}
+\subsubsection{\texorpdfstring{Trap\_ArmGracePeriod()}{Trap\_ArmGracePeriod()}}
+{\footnotesize\ttfamily void Trap\+\_\+\+Arm\+Grace\+Period (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Set the flag to arm the trap after the grace period. 
+
+
+
+Definition at line 328 of file main.\+c.
+
+\mbox{\Hypertarget{main_8c_ae7659ff399938c586e7913cad429a30e}\label{main_8c_ae7659ff399938c586e7913cad429a30e}} 
+\index{main.c@{main.c}!Trap\_Disarm@{Trap\_Disarm}}
+\index{Trap\_Disarm@{Trap\_Disarm}!main.c@{main.c}}
+\subsubsection{\texorpdfstring{Trap\_Disarm()}{Trap\_Disarm()}}
+{\footnotesize\ttfamily void Trap\+\_\+\+Disarm (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Disarm the trap. 
+
+
+
+Definition at line 335 of file main.\+c.
+
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{main_8c_a0723704782e3bd0c030e58e7e45b0434}\label{main_8c_a0723704782e3bd0c030e58e7e45b0434}} 
+\index{main.c@{main.c}!gTrapArmed@{gTrapArmed}}
+\index{gTrapArmed@{gTrapArmed}!main.c@{main.c}}
+\subsubsection{\texorpdfstring{gTrapArmed}{gTrapArmed}}
+{\footnotesize\ttfamily uint8\+\_\+t g\+Trap\+Armed = 0}
+
+
+
+Definition at line 224 of file main.\+c.
+

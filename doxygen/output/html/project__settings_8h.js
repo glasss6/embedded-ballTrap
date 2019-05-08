@@ -1,0 +1,25 @@
+var project__settings_8h =
+[
+    [ "FCPU", "project__settings_8h.html#a9d4ad5467cb8a39312513dfaaf4d950a", null ],
+    [ "I2C_MAX_RX_SIZE", "project__settings_8h.html#ad2b555d7882359c024c831c844d28f69", null ],
+    [ "I2C_MAX_TX_SIZE", "project__settings_8h.html#a7f177b43ed9acb3a242d59bb0634d472", null ],
+    [ "SPI_MAX_SIZE", "project__settings_8h.html#a204c5f9cd51f9f0b85c75920b3413f93", null ],
+    [ "SUBSYS_UART", "project__settings_8h.html#a32d172cf001f3cfb7ffb9c73644be7bc", null ],
+    [ "SUBSYSTEM_IO", "project__settings_8h.html#ab0ed7f18dcffdbaff52a3c33362f91b9", null ],
+    [ "SUBSYSTEM_UART", "project__settings_8h.html#a035eb27045a26785f6dca17fd74e7223", null ],
+    [ "TASK_MAX_LENGTH", "project__settings_8h.html#a8b57f9c17039742523f565af8c25694a", null ],
+    [ "THIEF_BRAINFRAME_NETWORK", "project__settings_8h.html#ae19bb9b63180b9107411f3a51e00df4b", null ],
+    [ "THIEF_SPI", "project__settings_8h.html#aeac88bab643a84a57d2b701a734c0606", null ],
+    [ "THIS_NODE", "project__settings_8h.html#a32825e5e355ae10f1348074f506af4f5", null ],
+    [ "UART1_TX_BUFFER_LENGTH", "project__settings_8h.html#a5cb76874abe271e651a6fbb682deb1e4", null ],
+    [ "USE_I2C0", "project__settings_8h.html#abacb48dd1307f915166b2cfbbd00217f", null ],
+    [ "USE_MODULE_BUFFER", "project__settings_8h.html#acde03ef9d93dd5b3aad1bd55a39840d8", null ],
+    [ "USE_MODULE_BUFFER_PRINTF", "project__settings_8h.html#a93caf6cbfe5185813f7eefb2036b7b55", null ],
+    [ "USE_MODULE_LIST", "project__settings_8h.html#a8d1789a56707b7c9ea6d4fe64e6a8853", null ],
+    [ "USE_MODULE_SUBSYSTEM", "project__settings_8h.html#a392577fa7ad97849b46f99a7ec268d48", null ],
+    [ "USE_MODULE_TASK", "project__settings_8h.html#ad3492af28180c72c39f6d728cda2179c", null ],
+    [ "USE_MODULE_TIMING", "project__settings_8h.html#ac148a665d5db5ea12e6b700f0a681f09", null ],
+    [ "USE_MODULE_UART", "project__settings_8h.html#a3156c1d690d6087eb423ae15047ee95d", null ],
+    [ "USE_SPI_B1", "project__settings_8h.html#ae38344c21ddc988d003853bdba32b3b6", null ],
+    [ "USE_UART1", "project__settings_8h.html#a26e1c11231f7378b418e8eecc2f2836c", null ]
+];

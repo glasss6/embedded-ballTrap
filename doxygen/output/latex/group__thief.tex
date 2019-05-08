@@ -1,0 +1,108 @@
+\hypertarget{group__thief}{}\section{Thief Module}
+\label{group__thief}\index{Thief Module@{Thief Module}}
+\subsection*{Modules}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{group__thief__brainframe}{Thief Brainframe Module}}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{group__thief_ga03f9659356dd27b2c363ec392788dc50}{Thief\+\_\+\+Trip}} (uint8\+\_\+t score)
+\begin{DoxyCompactList}\small\item\em send T\+R\+IP message over network to Brainframe \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__thief_ga9452fbc6fc191bdc2b07c6f64fcaf4d1}{Thief\+\_\+\+Access}} (uint8\+\_\+t score)
+\begin{DoxyCompactList}\small\item\em send A\+C\+C\+E\+SS message over network to Brainframe \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__thief_gad35f1b0518e285e9b5ea7b7be1a1c6e0}{Thief\+\_\+\+Error}} (uint8\+\_\+t error\+\_\+code)
+\begin{DoxyCompactList}\small\item\em send E\+R\+R\+OR message over network to Brainframe \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__thief_ga46dd5608b4e5e77b04ef07a9a390cb8f}{Thief\+\_\+\+Init}} (void($\ast$Chip\+Enable)(uint8\+\_\+t), void($\ast$Chip\+Select\+Not)(uint8\+\_\+t), void($\ast$Arm)(void), void($\ast$Disarm)(void), void($\ast$Difficulty)(uint8\+\_\+t))
+\begin{DoxyCompactList}\small\item\em initialize the n\+R\+F24 Network module for the Thief node and set callbacks \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+T\+H\+I\+E\+F\+\_\+\+S\+PI should be defined in \mbox{\hyperlink{project__settings_8h}{project\+\_\+settings.\+h}} 
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{group__thief_ga9452fbc6fc191bdc2b07c6f64fcaf4d1}\label{group__thief_ga9452fbc6fc191bdc2b07c6f64fcaf4d1}} 
+\index{Thief Module@{Thief Module}!Thief\_Access@{Thief\_Access}}
+\index{Thief\_Access@{Thief\_Access}!Thief Module@{Thief Module}}
+\subsubsection{\texorpdfstring{Thief\_Access()}{Thief\_Access()}}
+{\footnotesize\ttfamily void Thief\+\_\+\+Access (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{score }\end{DoxyParamCaption})}
+
+
+
+send A\+C\+C\+E\+SS message over network to Brainframe 
+
+
+\begin{DoxyParams}{Parameters}
+{\em score} & byte (0 -\/ score not used, 1 -\/ great job, 255 -\/ face palm) \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 31 of file thief.\+c.
+
+\mbox{\Hypertarget{group__thief_gad35f1b0518e285e9b5ea7b7be1a1c6e0}\label{group__thief_gad35f1b0518e285e9b5ea7b7be1a1c6e0}} 
+\index{Thief Module@{Thief Module}!Thief\_Error@{Thief\_Error}}
+\index{Thief\_Error@{Thief\_Error}!Thief Module@{Thief Module}}
+\subsubsection{\texorpdfstring{Thief\_Error()}{Thief\_Error()}}
+{\footnotesize\ttfamily void Thief\+\_\+\+Error (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{error\+\_\+code }\end{DoxyParamCaption})}
+
+
+
+send E\+R\+R\+OR message over network to Brainframe 
+
+
+\begin{DoxyParams}{Parameters}
+{\em error\+\_\+code} & byte (codes T\+BD) \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 41 of file thief.\+c.
+
+\mbox{\Hypertarget{group__thief_ga46dd5608b4e5e77b04ef07a9a390cb8f}\label{group__thief_ga46dd5608b4e5e77b04ef07a9a390cb8f}} 
+\index{Thief Module@{Thief Module}!Thief\_Init@{Thief\_Init}}
+\index{Thief\_Init@{Thief\_Init}!Thief Module@{Thief Module}}
+\subsubsection{\texorpdfstring{Thief\_Init()}{Thief\_Init()}}
+{\footnotesize\ttfamily void Thief\+\_\+\+Init (\begin{DoxyParamCaption}\item[{void($\ast$)(uint8\+\_\+t)}]{Chip\+Enable,  }\item[{void($\ast$)(uint8\+\_\+t)}]{Chip\+Select\+Not,  }\item[{void($\ast$)(void)}]{Arm,  }\item[{void($\ast$)(void)}]{Disarm,  }\item[{void($\ast$)(uint8\+\_\+t)}]{Difficulty }\end{DoxyParamCaption})}
+
+
+
+initialize the n\+R\+F24 Network module for the Thief node and set callbacks 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Chip\+Enable} & Function pointer to method that controls chip enable pin via G\+P\+IO \\
+\hline
+{\em Chip\+Select\+Not} & Function pointer to method that controls the S\+PI chip select for the n\+R\+F24\+L01+ \\
+\hline
+{\em Arm} & (optional)Function pointer to call when A\+RM message received from brainframe \\
+\hline
+{\em Disarm} & (optional)Function pointer to call when D\+I\+S\+A\+RM message received from brainframe \\
+\hline
+{\em Difficulty} & (optional) Function pointer to call when a non-\/zero difficulty value is received from the brainframe (1 -\/ easy, 255 -\/ freakin impossible) \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 51 of file thief.\+c.
+
+\mbox{\Hypertarget{group__thief_ga03f9659356dd27b2c363ec392788dc50}\label{group__thief_ga03f9659356dd27b2c363ec392788dc50}} 
+\index{Thief Module@{Thief Module}!Thief\_Trip@{Thief\_Trip}}
+\index{Thief\_Trip@{Thief\_Trip}!Thief Module@{Thief Module}}
+\subsubsection{\texorpdfstring{Thief\_Trip()}{Thief\_Trip()}}
+{\footnotesize\ttfamily void Thief\+\_\+\+Trip (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{score }\end{DoxyParamCaption})}
+
+
+
+send T\+R\+IP message over network to Brainframe 
+
+
+\begin{DoxyParams}{Parameters}
+{\em score} & byte (0 -\/ score not used, 1 -\/ barely tripped, 255 -\/ not trying) \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 21 of file thief.\+c.
+

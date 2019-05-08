@@ -1,0 +1,87 @@
+
+
+ This project interfaces a M\+M\+A8452Q accelerometer and n\+R\+F24 wireless module with the thief brainframe using the M\+S\+P430\+F5529 Launch\+Pad. The goal is to make a ball trap which can detect if it hits any human or object. The ball is armed by the thief brainframe then rolled. If, after a specified grace period, the ball hits a human or other desired object, the trap will send a trip message to the brainframe. If the trap does not hit any human within a specified time frame, the trap will disarm itself and send an access message to the brainframe. This trap is inspired by classic rolling boulder traps as seen in Indiana Jones films.\hypertarget{index_getting_started}{}\section{Getting Started}\label{index_getting_started}
+\hypertarget{index_project_settings}{}\subsection{Project Settings}\label{index_project_settings}
+
+\begin{DoxyItemize}
+\item The project uses a processor clock speed of (24M\+Hz)
+\item I2C channel 0 should be used with I2\+C\+\_\+\+M\+A\+X\+\_\+\+T\+X\+\_\+\+S\+I\+ZE at least 2 and I2\+C\+\_\+\+M\+A\+X\+\_\+\+R\+X\+\_\+\+S\+I\+ZE at least 6
+\item S\+PI channel 1 should be used with S\+P\+I\+\_\+\+M\+A\+X\+\_\+\+S\+I\+ZE at least 33
+\item I2C and S\+PI should be on different channels to prevent overlapping pin assignments
+\end{DoxyItemize}
+
+An example of project settings defines are shown below\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define FCPU 24000000}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define USE\_MODULE\_TASK}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define USE\_MODULE\_TIMING}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define USE\_MODULE\_LIST}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define USE\_MODULE\_BUFFER}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define USE\_MODULE\_BUFFER\_PRINTF}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define USE\_MODULE\_UART}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define USE\_MODULE\_SUBSYSTEM}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define USE\_UART1}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define SUBSYSTEM\_IO SUBSYSTEM\_IO\_UART}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define SUBSYSTEM\_UART 1}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define SUBSYS\_UART 1}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define UART1\_TX\_BUFFER\_LENGTH 512}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define TASK\_MAX\_LENGTH 50}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define USE\_I2C0}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define I2C\_MAX\_TX\_SIZE 2}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define I2C\_MAX\_RX\_SIZE 6}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define USE\_SPI\_B1}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define SPI\_MAX\_SIZE 33}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define THIEF\_SPI SPI\_B0}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define THIEF\_BRAINFRAME\_NETWORK}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define THIS\_NODE BALL\_TRAP}}
+\end{DoxyCode}
+\hypertarget{index_testing_environment}{}\subsection{Testing Environment}\label{index_testing_environment}
+This project was developed using a M\+S\+P430\+F5529 Launch\+Pad and Code Composer 8.\+0 I\+DE. The embedded-\/software library was used for hardware abstraction. Pu\+T\+TY software was used as a U\+A\+RT interface. Please see embedded-\/software library documentation for Code Composer Studio configuration. Other hardware\+: n\+R\+F24, Sparkfun M\+M\+A8452Q Breakout \begin{DoxySeeAlso}{See also}
+\href{https://github.com/muhlbaier/embedded-software}{\texttt{ https\+://github.\+com/muhlbaier/embedded-\/software}}
+\end{DoxySeeAlso}
+\hypertarget{index_operation}{}\subsection{Operation}\label{index_operation}
+The master brainframe should send an {\itshape arm} command to the ball trap node to start operation. In case of manual operation without a master brainframe, the system can be armed using the following command in a U\+A\+RT terminal. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$thief arm}
+\end{DoxyCode}
+
+
+Once armed, the ball should be pushed to be put in motion. The trap has an initial grace period of starting to detect human interface. The default grace period is 2s. (e.\+g the trap will not start detecting humans until this time has been passed, started after being armed). If the ball trap hits an object it will send a trip message to the brainframe. If the trap does not hit an object after a specified time (default 6s), it will disarm and send an access message to the brainframe.
+
+Note\+: The trap will detect collision with any solid object. It is not limited to human detection and the threshold for collision detections is dynamic.\hypertarget{index_collision_detection}{}\section{Collision Detection Calibration}\label{index_collision_detection}
+The accelerometer was calibrated for object detection using the following methodology\+:
+\begin{DoxyItemize}
+\item Read current X, Y, Z data from accelerometer every 200ms and output to U\+A\+RT
+\item Log U\+A\+RT output to Pu\+T\+TY and export as a C\+SV
+\item Using Microsoft Excel, a threshold was calculated which would serve as the point at which a collision should be ticked
+\end{DoxyItemize}
+
+To test, the accelerometer was placed on a rolling chair and pushed off towards a wall. When the rolling chair hits the wall, it should detect a collision. A line graph plotting the X, Y, Z data over the period of 17s in this scenario is shown in the figure below. 
+
+As seen from the figure, the first smaller spike is from the chair being pushed off towards the wall. The following multiple spikes are from multiple collisions of the accelerometer with the wall. To find a reasonable threshold value, the absolute values of the X, Y, Z columns are summed together (Manhattan Distance) and (1) is subtracted from the total to normalize the constant acceleration of gravity. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{float} normAccel = (fabs(x) + fabs(y) + fabs(z)) - 1;}
+\end{DoxyCode}
+ By analyzing the Manhattan distance of the accelerometer at certain points of collision impact, we chose an arbitrary value of 0.\+35f to be the threshold of a collision. E.\+g if any normalized acceleration distance is found above that value, it is determined to be a collision. In our tests, it is found that this value offers good collision detection suitable for our application. It is also assumed that in production, the ball will be pushed during the initial arming grace period, else the system may detect the initial push as a false positive.
+
+The collision threshold determined from this calibration is defined by C\+O\+L\+L\+I\+S\+I\+O\+N\+\_\+\+T\+H\+R\+E\+S\+H\+O\+LD definition in the \mbox{\hyperlink{main_8c}{main.\+c}} file. The default threshold value is 0.\+35f. Reducing the threshold value increases the sensitivity for detecting a collision. Inversely, increasing the threshold value increases the sensitivity for collision detection. The default threshold value is rated for a \char`\"{}medium speed\char`\"{} collision with a solid object.\hypertarget{index_accelerometer_notes}{}\section{Accelerometer}\label{index_accelerometer_notes}
+
+\begin{DoxyItemize}
+\item The I2C module and I2C H\+AL for M\+S\+P430\+F5529 in the embedded-\/software library was modified to add the ability to specify if a stop-\/bit should be added at the end of a I2C transaction. This was added to interface with the M\+M\+A8452Q module. Anyone using this project should use the same I2C code or be updated to also support this functionality.
+\item The accelerometer should use I2C channel I2\+C\+\_\+\+B0 because I2\+C\+\_\+\+B1 is not fully implemented in M\+S\+P430\+F5529 H\+AL
+\item If the accelerometer uses I2\+C\+\_\+\+B0, the n\+R\+F24 must use S\+P\+I\+\_\+\+B1 because S\+P\+I\+\_\+\+B0 and I2\+C\+\_\+\+B0 use the same pins on M\+S\+P430\+F5529
+\item The default scale for the accelerometer is configured for +/-\/2G. This can be changed in the accelerometer source code macro definition. However, in testing it was found this did not improve results.
+\item The optimal sampling rate for the accelerometer (Accelerometer\+\_\+\+Init) was found to be approximately 200ms
+\end{DoxyItemize}\hypertarget{index_Results}{}\section{Results}\label{index_Results}
+The results of the trap align with the initial project goals. The trap is able to successfully use an accelerometer to detect impact of object and then report the collision to the thief brainframe. One revision which was required from the initial project goals was the transition from a rolling ball enclosure to a rolling chair setup. If the device was in a rolling ball enclosure, it would be difficult to debug using a U\+SB cable for U\+A\+RT logging (the cable would prevent smooth rolling of a ball). In addition, we determined the mechanical engineering aspect of the ball enclosure would distract us from the main embedded software focus.
+
+The resulting project aligns with the principles of good embedded software design. Our code is clean, modular, and reusable. The accelerometer code was written simply so anyone can simply include the module and read data from the sensor. The ball trap portion of the code is well documented and has optional debug logging to U\+A\+RT by (un)commenting a user-\/define. Additionally, the methodology of our collision detection calibration was clearly outlined and defined so any additional user of our trap can understand how we came to our results and modify it for their use-\/case if need be.\hypertarget{index_technology_usage}{}\section{Technology Usage}\label{index_technology_usage}
+\hypertarget{index_Slack}{}\subsection{Slack}\label{index_Slack}
+Slack was useful for easily communicating with our team-\/members. A Slack private channel was created for our team and we communicated mostly in that channel for\+: discussion for due dates, project goals, logistics, etc. Overall, it was helpful.\hypertarget{index_Trello}{}\subsection{Trello}\label{index_Trello}
+Trello was useful for staying organizing and to understand what the goals and deadlines were for each sprint. Additionally, everyone was able to see each group members\textquotesingle{} individual contributions to a task. Overall, Trello was useful for the project and solving the logisitics of a group project.\hypertarget{index_authors}{}\section{Authors}\label{index_authors}
+
+\begin{DoxyItemize}
+\item Stephen Glass
+\item Lonnie Souder
+\end{DoxyItemize}\hypertarget{index_Appendix}{}\section{Appendix}\label{index_Appendix}
+ 

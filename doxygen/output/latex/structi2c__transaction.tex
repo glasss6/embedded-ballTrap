@@ -1,0 +1,170 @@
+\hypertarget{structi2c__transaction}{}\section{i2c\+\_\+transaction Struct Reference}
+\label{structi2c__transaction}\index{i2c\_transaction@{i2c\_transaction}}
+
+
+{\ttfamily \#include $<$i2c.\+h$>$}
+
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{structi2c__transaction_a94035cb7ae168f3af5cfd510c5ad2d07}{write\+Data}} \mbox{[}\mbox{\hyperlink{project__settings_8h_a7f177b43ed9acb3a242d59bb0634d472}{I2\+C\+\_\+\+M\+A\+X\+\_\+\+T\+X\+\_\+\+S\+I\+ZE}}\mbox{]}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{structi2c__transaction_ab31c4effe7e39b1daa34bdbaf81d9c26}{read\+Data}} \mbox{[}\mbox{\hyperlink{project__settings_8h_ad2b555d7882359c024c831c844d28f69}{I2\+C\+\_\+\+M\+A\+X\+\_\+\+R\+X\+\_\+\+S\+I\+ZE}}\mbox{]}
+\item 
+uint16\+\_\+t \mbox{\hyperlink{structi2c__transaction_a39355aaf2ca79cfee2f4c48e692fdac4}{slave\+\_\+address}}
+\item 
+\begin{tabbing}
+xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
+struct \{\\
+\>uint16\_t \mbox{\hyperlink{structi2c__transaction_ab8a9791877d01a031701758f2dd8973f}{writeLength}}: 4\\
+\>uint16\_t \mbox{\hyperlink{structi2c__transaction_adce12eadeb7ab26aca578b88ed257cf6}{readLength}}: 4\\
+\>uint16\_t \mbox{\hyperlink{structi2c__transaction_a2528939b8dab26063413e929081aa990}{channel}}: 3\\
+\>uint16\_t \mbox{\hyperlink{structi2c__transaction_a9a1d418ee705e0563d6f00ae6703153b}{retryCount}}: 3\\
+\>uint16\_t \mbox{\hyperlink{structi2c__transaction_a8194807e4e35ff63c815e8865e2b35a8}{blocking}}: 1\\
+\>uint16\_t \mbox{\hyperlink{structi2c__transaction_afd27122dedf3a0a08b1f1930219e0f8d}{finished}}: 1\\
+\>uint16\_t \mbox{\hyperlink{structi2c__transaction_aaa551080eff5d54dc147058100f64091}{error}}: 1\\
+\>uint16\_t \mbox{\hyperlink{structi2c__transaction_acc5a5b5ac6be9b67a1d0e6d62ddb6b6b}{stayActive}}: 1\\
+\}; \\
+
+\end{tabbing}\item 
+void($\ast$ \mbox{\hyperlink{structi2c__transaction_aa5519941867a3e28ccb32fc9c5919bde}{callback}} )(struct \mbox{\hyperlink{structi2c__transaction}{i2c\+\_\+transaction}})
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 34 of file i2c.\+h.
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{structi2c__transaction_a35843fd5bb3d1472e87543491e4d55c0}\label{structi2c__transaction_a35843fd5bb3d1472e87543491e4d55c0}} 
+\subsubsection{\texorpdfstring{"@3}{@3}}
+{\footnotesize\ttfamily struct \{ ... \} }
+
+\mbox{\Hypertarget{structi2c__transaction_a8194807e4e35ff63c815e8865e2b35a8}\label{structi2c__transaction_a8194807e4e35ff63c815e8865e2b35a8}} 
+\index{i2c\_transaction@{i2c\_transaction}!blocking@{blocking}}
+\index{blocking@{blocking}!i2c\_transaction@{i2c\_transaction}}
+\subsubsection{\texorpdfstring{blocking}{blocking}}
+{\footnotesize\ttfamily uint16\+\_\+t i2c\+\_\+transaction\+::blocking}
+
+
+
+Definition at line 43 of file i2c.\+h.
+
+\mbox{\Hypertarget{structi2c__transaction_aa5519941867a3e28ccb32fc9c5919bde}\label{structi2c__transaction_aa5519941867a3e28ccb32fc9c5919bde}} 
+\index{i2c\_transaction@{i2c\_transaction}!callback@{callback}}
+\index{callback@{callback}!i2c\_transaction@{i2c\_transaction}}
+\subsubsection{\texorpdfstring{callback}{callback}}
+{\footnotesize\ttfamily void($\ast$ i2c\+\_\+transaction\+::callback) (struct \mbox{\hyperlink{structi2c__transaction}{i2c\+\_\+transaction}})}
+
+
+
+Definition at line 49 of file i2c.\+h.
+
+\mbox{\Hypertarget{structi2c__transaction_a2528939b8dab26063413e929081aa990}\label{structi2c__transaction_a2528939b8dab26063413e929081aa990}} 
+\index{i2c\_transaction@{i2c\_transaction}!channel@{channel}}
+\index{channel@{channel}!i2c\_transaction@{i2c\_transaction}}
+\subsubsection{\texorpdfstring{channel}{channel}}
+{\footnotesize\ttfamily uint16\+\_\+t i2c\+\_\+transaction\+::channel}
+
+
+
+Definition at line 41 of file i2c.\+h.
+
+\mbox{\Hypertarget{structi2c__transaction_aaa551080eff5d54dc147058100f64091}\label{structi2c__transaction_aaa551080eff5d54dc147058100f64091}} 
+\index{i2c\_transaction@{i2c\_transaction}!error@{error}}
+\index{error@{error}!i2c\_transaction@{i2c\_transaction}}
+\subsubsection{\texorpdfstring{error}{error}}
+{\footnotesize\ttfamily uint16\+\_\+t i2c\+\_\+transaction\+::error}
+
+
+
+Definition at line 45 of file i2c.\+h.
+
+\mbox{\Hypertarget{structi2c__transaction_afd27122dedf3a0a08b1f1930219e0f8d}\label{structi2c__transaction_afd27122dedf3a0a08b1f1930219e0f8d}} 
+\index{i2c\_transaction@{i2c\_transaction}!finished@{finished}}
+\index{finished@{finished}!i2c\_transaction@{i2c\_transaction}}
+\subsubsection{\texorpdfstring{finished}{finished}}
+{\footnotesize\ttfamily uint16\+\_\+t i2c\+\_\+transaction\+::finished}
+
+
+
+Definition at line 44 of file i2c.\+h.
+
+\mbox{\Hypertarget{structi2c__transaction_ab31c4effe7e39b1daa34bdbaf81d9c26}\label{structi2c__transaction_ab31c4effe7e39b1daa34bdbaf81d9c26}} 
+\index{i2c\_transaction@{i2c\_transaction}!readData@{readData}}
+\index{readData@{readData}!i2c\_transaction@{i2c\_transaction}}
+\subsubsection{\texorpdfstring{readData}{readData}}
+{\footnotesize\ttfamily uint8\+\_\+t i2c\+\_\+transaction\+::read\+Data\mbox{[}\mbox{\hyperlink{project__settings_8h_ad2b555d7882359c024c831c844d28f69}{I2\+C\+\_\+\+M\+A\+X\+\_\+\+R\+X\+\_\+\+S\+I\+ZE}}\mbox{]}}
+
+
+
+Definition at line 36 of file i2c.\+h.
+
+\mbox{\Hypertarget{structi2c__transaction_adce12eadeb7ab26aca578b88ed257cf6}\label{structi2c__transaction_adce12eadeb7ab26aca578b88ed257cf6}} 
+\index{i2c\_transaction@{i2c\_transaction}!readLength@{readLength}}
+\index{readLength@{readLength}!i2c\_transaction@{i2c\_transaction}}
+\subsubsection{\texorpdfstring{readLength}{readLength}}
+{\footnotesize\ttfamily uint16\+\_\+t i2c\+\_\+transaction\+::read\+Length}
+
+
+
+Definition at line 40 of file i2c.\+h.
+
+\mbox{\Hypertarget{structi2c__transaction_a9a1d418ee705e0563d6f00ae6703153b}\label{structi2c__transaction_a9a1d418ee705e0563d6f00ae6703153b}} 
+\index{i2c\_transaction@{i2c\_transaction}!retryCount@{retryCount}}
+\index{retryCount@{retryCount}!i2c\_transaction@{i2c\_transaction}}
+\subsubsection{\texorpdfstring{retryCount}{retryCount}}
+{\footnotesize\ttfamily uint16\+\_\+t i2c\+\_\+transaction\+::retry\+Count}
+
+
+
+Definition at line 42 of file i2c.\+h.
+
+\mbox{\Hypertarget{structi2c__transaction_a39355aaf2ca79cfee2f4c48e692fdac4}\label{structi2c__transaction_a39355aaf2ca79cfee2f4c48e692fdac4}} 
+\index{i2c\_transaction@{i2c\_transaction}!slave\_address@{slave\_address}}
+\index{slave\_address@{slave\_address}!i2c\_transaction@{i2c\_transaction}}
+\subsubsection{\texorpdfstring{slave\_address}{slave\_address}}
+{\footnotesize\ttfamily uint16\+\_\+t i2c\+\_\+transaction\+::slave\+\_\+address}
+
+
+
+Definition at line 37 of file i2c.\+h.
+
+\mbox{\Hypertarget{structi2c__transaction_acc5a5b5ac6be9b67a1d0e6d62ddb6b6b}\label{structi2c__transaction_acc5a5b5ac6be9b67a1d0e6d62ddb6b6b}} 
+\index{i2c\_transaction@{i2c\_transaction}!stayActive@{stayActive}}
+\index{stayActive@{stayActive}!i2c\_transaction@{i2c\_transaction}}
+\subsubsection{\texorpdfstring{stayActive}{stayActive}}
+{\footnotesize\ttfamily uint16\+\_\+t i2c\+\_\+transaction\+::stay\+Active}
+
+
+
+Definition at line 46 of file i2c.\+h.
+
+\mbox{\Hypertarget{structi2c__transaction_a94035cb7ae168f3af5cfd510c5ad2d07}\label{structi2c__transaction_a94035cb7ae168f3af5cfd510c5ad2d07}} 
+\index{i2c\_transaction@{i2c\_transaction}!writeData@{writeData}}
+\index{writeData@{writeData}!i2c\_transaction@{i2c\_transaction}}
+\subsubsection{\texorpdfstring{writeData}{writeData}}
+{\footnotesize\ttfamily uint8\+\_\+t i2c\+\_\+transaction\+::write\+Data\mbox{[}\mbox{\hyperlink{project__settings_8h_a7f177b43ed9acb3a242d59bb0634d472}{I2\+C\+\_\+\+M\+A\+X\+\_\+\+T\+X\+\_\+\+S\+I\+ZE}}\mbox{]}}
+
+
+
+Definition at line 35 of file i2c.\+h.
+
+\mbox{\Hypertarget{structi2c__transaction_ab8a9791877d01a031701758f2dd8973f}\label{structi2c__transaction_ab8a9791877d01a031701758f2dd8973f}} 
+\index{i2c\_transaction@{i2c\_transaction}!writeLength@{writeLength}}
+\index{writeLength@{writeLength}!i2c\_transaction@{i2c\_transaction}}
+\subsubsection{\texorpdfstring{writeLength}{writeLength}}
+{\footnotesize\ttfamily uint16\+\_\+t i2c\+\_\+transaction\+::write\+Length}
+
+
+
+Definition at line 39 of file i2c.\+h.
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/sglas/embedded\+Software/accel\+Test/\mbox{\hyperlink{i2c_8h}{i2c.\+h}}\end{DoxyCompactItemize}

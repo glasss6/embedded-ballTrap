@@ -1,0 +1,37 @@
+\hypertarget{thief__brainframe_8c}{}\section{C\+:/\+Users/sglas/embedded\+Software/accel\+Test/thief\+\_\+brainframe.c File Reference}
+\label{thief__brainframe_8c}\index{C:/Users/sglas/embeddedSoftware/accelTest/thief\_brainframe.c@{C:/Users/sglas/embeddedSoftware/accelTest/thief\_brainframe.c}}
+{\ttfamily \#include \char`\"{}project\+\_\+settings.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}nrf24network.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}subsystem.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}hal\+\_\+general.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}spi.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}string.\+h\char`\"{}}\newline
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{group__thief__brainframe_gaf4b9fbc4453a50a19a28ecee8ed63044}{Thief\+\_\+\+Arm}} (uint8\+\_\+t difficulty, uint8\+\_\+t address)
+\begin{DoxyCompactList}\small\item\em send A\+RM message over network to a theif node \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__thief__brainframe_ga10cdfb092b86745f7fb0b3531e0436ab}{Thief\+\_\+\+Disarm}} (uint8\+\_\+t difficulty, uint8\+\_\+t address)
+\begin{DoxyCompactList}\small\item\em send D\+I\+S\+A\+RM message over network to a theif node \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__thief__brainframe_ga7ca7cde9d8471a5e774b9259dcc15482}{Thief\+\_\+\+Difficulty}} (uint8\+\_\+t difficulty, uint8\+\_\+t address)
+\begin{DoxyCompactList}\small\item\em send D\+I\+F\+F\+I\+C\+U\+L\+TY message over network to a theif node \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__thief__brainframe_ga9a9be1f1330ceab71417b4f6896c6596}{Thief\+\_\+\+Brainframe\+Init}} (void($\ast$Chip\+Enable)(uint8\+\_\+t), void($\ast$Chip\+Select\+Not)(uint8\+\_\+t), void($\ast$Trip)(uint8\+\_\+t, uint8\+\_\+t), void($\ast$Access)(uint8\+\_\+t, uint8\+\_\+t))
+\begin{DoxyCompactList}\small\item\em initialize the n\+R\+F24 Network module for the Thief Brainframe and set callbacks \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+nrfnet\+\_\+t \mbox{\hyperlink{thief__brainframe_8c_a1a9158965315411a75d3985c899391d7}{Brainframe\+\_\+\+Net}}
+\end{DoxyCompactItemize}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{thief__brainframe_8c_a1a9158965315411a75d3985c899391d7}\label{thief__brainframe_8c_a1a9158965315411a75d3985c899391d7}} 
+\index{thief\_brainframe.c@{thief\_brainframe.c}!Brainframe\_Net@{Brainframe\_Net}}
+\index{Brainframe\_Net@{Brainframe\_Net}!thief\_brainframe.c@{thief\_brainframe.c}}
+\subsubsection{\texorpdfstring{Brainframe\_Net}{Brainframe\_Net}}
+{\footnotesize\ttfamily nrfnet\+\_\+t Brainframe\+\_\+\+Net}
+
+
+
+Definition at line 18 of file thief\+\_\+brainframe.\+c.
+

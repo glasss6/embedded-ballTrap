@@ -1,0 +1,120 @@
+\hypertarget{group__accelerometer}{}\section{Accelerometer module}
+\label{group__accelerometer}\index{Accelerometer module@{Accelerometer module}}
+\subsection*{Files}
+\begin{DoxyCompactItemize}
+\item 
+file \mbox{\hyperlink{accelerometer_8h}{accelerometer.\+h}}
+\begin{DoxyCompactList}\small\item\em Code to read data from an accelerometer. Designed for Spark\+Fun Triple Axis Accelerometer Breakout (M\+M\+A8452Q) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{group__accelerometer_ga8b423e9f25b16e32c82ab15528d61d1b}{E\+R\+R\+O\+R\+\_\+\+R\+X\+\_\+\+S\+I\+ZE}}~(-\/1)
+\item 
+\#define \mbox{\hyperlink{group__accelerometer_ga5f5adccae1b5f6db5c660ae10cec9afb}{E\+R\+R\+O\+R\+\_\+\+T\+X\+\_\+\+S\+I\+ZE}}~(-\/2)
+\item 
+\#define \mbox{\hyperlink{group__accelerometer_ga802fe27b06ba320251ae97983a68ce64}{E\+R\+R\+O\+R\+\_\+\+N\+O\+T\+\_\+\+O\+N\+L\+I\+NE}}~(-\/3)
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int8\+\_\+t \mbox{\hyperlink{group__accelerometer_gabb5dc31f52b4c94babb890afe85fdc29}{Accelerometer\+\_\+\+Init}} (uint16\+\_\+t period, void($\ast$callback)(float x, float y, float z))
+\begin{DoxyCompactList}\small\item\em Initialize the accelerometer to read data at a period returning to a callback. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__accelerometer_gae22be8908e6faff9d8ea3e54adfb31f0}{Accelerometer\+\_\+\+Deinit}} (void)
+\begin{DoxyCompactList}\small\item\em Deinitialize the accelerometer task scheduler. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Created on\+: March 25, 2019 Updated on\+: April 12, 2019 Author\+: Stephen Glass, Lonnie Souder 
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{group__accelerometer_ga802fe27b06ba320251ae97983a68ce64}\label{group__accelerometer_ga802fe27b06ba320251ae97983a68ce64}} 
+\index{Accelerometer module@{Accelerometer module}!ERROR\_NOT\_ONLINE@{ERROR\_NOT\_ONLINE}}
+\index{ERROR\_NOT\_ONLINE@{ERROR\_NOT\_ONLINE}!Accelerometer module@{Accelerometer module}}
+\subsubsection{\texorpdfstring{ERROR\_NOT\_ONLINE}{ERROR\_NOT\_ONLINE}}
+{\footnotesize\ttfamily \#define E\+R\+R\+O\+R\+\_\+\+N\+O\+T\+\_\+\+O\+N\+L\+I\+NE~(-\/3)}
+
+
+
+Definition at line 34 of file accelerometer.\+h.
+
+\mbox{\Hypertarget{group__accelerometer_ga8b423e9f25b16e32c82ab15528d61d1b}\label{group__accelerometer_ga8b423e9f25b16e32c82ab15528d61d1b}} 
+\index{Accelerometer module@{Accelerometer module}!ERROR\_RX\_SIZE@{ERROR\_RX\_SIZE}}
+\index{ERROR\_RX\_SIZE@{ERROR\_RX\_SIZE}!Accelerometer module@{Accelerometer module}}
+\subsubsection{\texorpdfstring{ERROR\_RX\_SIZE}{ERROR\_RX\_SIZE}}
+{\footnotesize\ttfamily \#define E\+R\+R\+O\+R\+\_\+\+R\+X\+\_\+\+S\+I\+ZE~(-\/1)}
+
+
+
+Definition at line 32 of file accelerometer.\+h.
+
+\mbox{\Hypertarget{group__accelerometer_ga5f5adccae1b5f6db5c660ae10cec9afb}\label{group__accelerometer_ga5f5adccae1b5f6db5c660ae10cec9afb}} 
+\index{Accelerometer module@{Accelerometer module}!ERROR\_TX\_SIZE@{ERROR\_TX\_SIZE}}
+\index{ERROR\_TX\_SIZE@{ERROR\_TX\_SIZE}!Accelerometer module@{Accelerometer module}}
+\subsubsection{\texorpdfstring{ERROR\_TX\_SIZE}{ERROR\_TX\_SIZE}}
+{\footnotesize\ttfamily \#define E\+R\+R\+O\+R\+\_\+\+T\+X\+\_\+\+S\+I\+ZE~(-\/2)}
+
+
+
+Definition at line 33 of file accelerometer.\+h.
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{group__accelerometer_gae22be8908e6faff9d8ea3e54adfb31f0}\label{group__accelerometer_gae22be8908e6faff9d8ea3e54adfb31f0}} 
+\index{Accelerometer module@{Accelerometer module}!Accelerometer\_Deinit@{Accelerometer\_Deinit}}
+\index{Accelerometer\_Deinit@{Accelerometer\_Deinit}!Accelerometer module@{Accelerometer module}}
+\subsubsection{\texorpdfstring{Accelerometer\_Deinit()}{Accelerometer\_Deinit()}}
+{\footnotesize\ttfamily void Accelerometer\+\_\+\+Deinit (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Deinitialize the accelerometer task scheduler. 
+
+
+
+Definition at line 143 of file accelerometer.\+c.
+
+\mbox{\Hypertarget{group__accelerometer_gabb5dc31f52b4c94babb890afe85fdc29}\label{group__accelerometer_gabb5dc31f52b4c94babb890afe85fdc29}} 
+\index{Accelerometer module@{Accelerometer module}!Accelerometer\_Init@{Accelerometer\_Init}}
+\index{Accelerometer\_Init@{Accelerometer\_Init}!Accelerometer module@{Accelerometer module}}
+\subsubsection{\texorpdfstring{Accelerometer\_Init()}{Accelerometer\_Init()}}
+{\footnotesize\ttfamily int8\+\_\+t Accelerometer\+\_\+\+Init (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{period,  }\item[{void($\ast$)(float x, float y, float z)}]{callback }\end{DoxyParamCaption})}
+
+
+
+Initialize the accelerometer to read data at a period returning to a callback. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em period} & period to check data from accelerometer (milliseconds) \\
+\hline
+{\em period} & function pointer for callback where data is returned \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+returns success of initialization, ($<$ 0 is error) 
+\end{DoxyReturn}
+Return error if TX size is not at least 2
+
+Return error if RX size is not at least 6
+
+Initialize I2C communication with accelerometer
+
+Configure base transaction configuration
+
+Start read of W\+H\+O\+\_\+\+A\+M\+\_\+I register to check if device is online We write the register we want to read in first transaction, while keeping connection active The next transaction we read the value from the previous register and terminate the connection
+
+Reading W\+H\+O\+\_\+\+A\+M\+\_\+I always returns D\+E\+V\+I\+C\+E\+\_\+\+F\+O\+U\+ND
+
+Put into S\+T\+A\+N\+D\+BY mode Registers can only be changed on accelerometer while in S\+T\+A\+N\+D\+BY mode Read the C\+T\+R\+L\+\_\+\+R\+E\+G1 value and then write the negated value to C\+T\+R\+L\+\_\+\+R\+E\+G1
+
+Configure scale
+
+Put into A\+C\+T\+I\+VE mode Read the C\+T\+R\+L\+\_\+\+R\+E\+G1 value and then write the enabled value to C\+T\+R\+L\+\_\+\+R\+E\+G1
+
+Assign callback pointer to data structure
+
+Schedule task to read data 
+
+Definition at line 41 of file accelerometer.\+c.
+
